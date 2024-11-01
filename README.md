@@ -1,4 +1,4 @@
 # Notes
 
 ## Python
-[Передача управления доменом](https://github.com/ofrsed/Notes/blob/main/Python/python_notes%2Cmd?plain=18)
+[Передача управления доменом](https://github.com/ofrsed/Notes/blob/main/Python/python_notes.md)
