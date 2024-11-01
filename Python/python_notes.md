@@ -132,5 +132,6 @@ Myset.clear() – удаляет все элементы из множества
 
 
 ![Image alt](https://github.com/ofrsed/Notes/blob/main/Python/union.png) 
+
 | A \| B \|A.union(B) | Возвращает множество, являющееся объединением множеств A и B |
 | A \|= B A.update(B) | Добавляет в множество A все элементы из множества B |
