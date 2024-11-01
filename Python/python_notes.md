@@ -145,3 +145,17 @@ Myset.clear() – удаляет все элементы из множества
 `A & B A.intersection(B)` -  Возвращает множество, являющееся пересечением множеств A и B
 
 `A &= B  A.intersection_update(B)` - Оставляет в множестве A только те элементы, которые есть в множестве B
+
+### Разность множеств (Оператор  - )
+![Image alt](https://github.com/ofrsed/Notes/blob/main/Python/difference.png) 
+
+`A - B   A.difference(B)` -  Возвращает разность множеств A и B
+
+`A -= B   A.difference_update(B)` - Удаляет из множества A все элементы, входящие в B
+
+### Симметрическая разность (Оператор ^ )
+![Image alt](https://github.com/ofrsed/Notes/blob/main/Python/symmetric_difference.png) 
+
+`A ^ B   A.symmetric_difference(B)` -  Возвращает симметрическую разность множеств A и B
+
+`A ^= B   A.symmetric_difference_update(B)` - Записывает в A симметрическую разность множеств A и B
