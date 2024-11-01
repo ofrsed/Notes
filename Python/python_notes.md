@@ -91,9 +91,13 @@ colors = ('red', 'green', 'blue', 'cyan')
 Распаковка со звездочкой посередине
 
 ```
-singer = ('Freddie', 'Bohemian Rhapsody', 'Killer Queen', 'Love of my life', 'Mercury')
+singer = ('one', 'two', 'three', 'four', 'five')
  name, *songs, surname = singer print(name) print(songs) print(surname)
 ```
 
 Выводит:
-Freddie ['Bohemian Rhapsody', 'Killer Queen', 'Love of my life'] Mercury
+one ['two', 'three', 'four'] five
+
+
+Булевые значения
+
