@@ -131,4 +131,5 @@ Myset.pop() - удаляет и возвращает случайный элем
 Myset.clear() – удаляет все элементы из множества
 
 |  |
-| | 
+|![Image alt](https://github.com/ofrsed/Notes/blob/main/Python/union.png) | 
+![Image alt](https://github.com/ofrsed/Notes/blob/main/Python/union.png)
