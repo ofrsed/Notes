@@ -139,8 +139,9 @@ Myset.clear() – удаляет все элементы из множества
 
 `A |= B  A.update(B)` - Добавляет в множество A все элементы из множества B
 
+### Пересечение множеств (Оператор &)
+![Image alt](https://github.com/ofrsed/Notes/blob/main/Python/intersection.png) 
 
-| Command | Description |
-| --- | --- |
-| ![Image alt](https://github.com/ofrsed/Notes/blob/main/Python/union.png)  | List all *new or modified* files |
-| `git diff`  Show file differences that **haven't been** staged |
+`A & B A.intersection(B)` -  Возвращает множество, являющееся пересечением множеств A и B
+
+`A &= B  A.intersection_update(B)` - Оставляет в множестве A только те элементы, которые есть в множестве B
