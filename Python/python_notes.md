@@ -130,6 +130,7 @@ Myset.discard() – удаляет элемент из множества без
 Myset.pop() - удаляет и возвращает случайный элемент из множества с генерацией исключения (ошибки) при попытке удаления из пустого множества.
 Myset.clear() – удаляет все элементы из множества
 
-| онно |
-|![Image alt](https://github.com/ofrsed/Notes/blob/main/Python/union.png) | 
-![Image alt](https://github.com/ofrsed/Notes/blob/main/Python/union.png)
+
+![Image alt](https://github.com/ofrsed/Notes/blob/main/Python/union.png) 
+| A \| B \|A.union(B) | Возвращает множество, являющееся объединением множеств A и B |
+| A \|= B A.update(B) | Добавляет в множество A все элементы из множества B |
