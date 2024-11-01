@@ -314,6 +314,7 @@ Info = dict (zip (keys, values ) )
  
 Модуль operator
 | Операция  |	Синтаксис |	Функция |
+|  -----------  | ----------- | ----------- |
 | Addition |	a + b	| add ( a , b) |
 | Containment |	Test	obj in seq |	contains ( seq, obj ) |
 | Division |	a / b |	truediv (a , b ) |
