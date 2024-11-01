@@ -121,6 +121,7 @@ INTERVAL '10-2' YEAR_MONTH
 Поддерживаемые единицы измерения - MICROSECOND, SECOND, MINUTE, HOUR, DAY, WEEK, MONTH, QUARTER, YEAR
 
 Составные:
+| --- | --- |
 | SECOND_MICROSECOND	| секунды.микросекунды | 
 | MINUTE_MICROSECOND	| минуты:секунды.микросекунды | 
 | MINUTE_SECOND	| минуты:секунды | 
