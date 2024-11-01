@@ -10,7 +10,7 @@ SELECT id, artist, trackname FROM Songs ORDER BY artist, id DESC; - сортир
 ```
 
 ## Фильтрация данных 
-SELECT * FROM Songs WHERE artist = 'The Sounds' ORDER BY streams;
+```SELECT * FROM Songs WHERE artist = 'The Sounds' ORDER BY streams;```
 | Оператор | Проверка |
 | --- | --- |
 | `=` | Равенство |
