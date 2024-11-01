@@ -86,14 +86,14 @@ Int | Целое | Неизменяемые |  |
 \```
 colors = ('red', 'green', 'blue', 'cyan')
  a, b, c, d = colors
-```\
+\```
 
 Распаковка со звездочкой посередине
 
 \```
 singer = ('Freddie', 'Bohemian Rhapsody', 'Killer Queen', 'Love of my life', 'Mercury')
  name, *songs, surname = singer print(name) print(songs) print(surname)
-```\
+\```
 
 Выводит:
 Freddie ['Bohemian Rhapsody', 'Killer Queen', 'Love of my life'] Mercury
