@@ -142,5 +142,5 @@ Myset.clear() – удаляет все элементы из множества
 
 | Command | Description |
 | --- | --- |
-| `git status` | List all *new or modified* files |
+| ![Image alt](https://github.com/ofrsed/Notes/blob/main/Python/union.png)  | List all *new or modified* files |
 | `git diff` | Show file differences that **haven't been** staged |
