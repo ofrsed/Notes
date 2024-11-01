@@ -138,3 +138,9 @@ Myset.clear() – удаляет все элементы из множества
 `A | B  A.union(B)` -  Возвращает множество, являющееся объединением множеств A и B
 
 `A |= B  A.update(B)` - Добавляет в множество A все элементы из множества B
+
+
+| Command | Description |
+| --- | --- |
+| `git status` | List all *new or modified* files |
+| `git diff` | Show file differences that **haven't been** staged |
