@@ -281,4 +281,6 @@ TIME_FORMAT('07:30:00', GET_FORMAT(TIME, 'USA'));
 | SIGNED |	значение типа BIGINT с учетом знака |
 | UNSIGNED |	значение типа BIGINT без учета знака |
 | YEAR |	значение типа YEAR |
-  
+
+- `CAST()` - тоже что и `CONVERT()`но она разделяет передаваемые аргументы не запятой, а ключевым словом AS
+```SELECT CAST(100.78 AS DECIMAL(4, 1))```
