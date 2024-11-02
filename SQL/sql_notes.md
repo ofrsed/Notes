@@ -335,9 +335,11 @@ FROM Books;
 - `SUM()` - вычисление суммы числовых значений поля
 - `GROUP_CONCAT()` - используется для перечисления значений поля через запятую.
   - Сортировка и изменение разделителя
-  - ```SELECT GROUP_CONCAT(trackname ORDER BY trackname SEPARATOR '; ') AS songs
+```
+SELECT GROUP_CONCAT(trackname ORDER BY trackname SEPARATOR '; ') AS songs
 FROM Songs
-WHERE id <= 5;```
+WHERE id <= 5;
+```
 
 Примечание
 1. Внутри AVG(), COUNT(), SUM() и GROUP_CONCAT() можно указать `DISTINCT`, чтобы в итоговых вычислениях участвовали лишь уникальные значения поля
