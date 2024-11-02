@@ -1,9 +1,13 @@
-```SELECT DISTINCT artist FROM Songs;    - извлекает только уникальные записи
-
+```
+SELECT DISTINCT artist FROM Songs; - извлекает только уникальные записи
+```
+```
 SELECT trackname FROM Songs LIMIT 3 OFFSET 2; - получить первые 3 записи начиная со 2-й (offset) limit – количество строк для извлечение, offset – начальная точка
 ```
 ```
 SELECT artist, trackname FROM Songs ORDER BY release_date; - сортировка
+```
+```
 SELECT title FROM Songs ORDER BY title ASC; - то же, ASC – по возрастанию (не обязательно)
 ```
 ```
