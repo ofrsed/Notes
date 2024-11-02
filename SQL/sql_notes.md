@@ -224,3 +224,12 @@ INTERVAL '10-2' YEAR_MONTH
   - format — строка формата
 
 ```SELECT STR_TO_DATE('07:30, 20.10.2023', '%H:%i, %d.%m.%Y');```
+
+- `GET_FORMAT()` - Используется для получения определенной строки формата для даты, времени или даты и времени.
+  - type — тип объекта, для которого требуется строка формата (DATE, TIME или DATETIME)
+  - format — непосредственно формат (USA, JIS, ISO или EUR)
+
+```
+SELECT DATE_FORMAT('2023-10-20', GET_FORMAT(DATE, 'USA')),
+TIME_FORMAT('07:30:00', GET_FORMAT(TIME, 'USA'));
+```
