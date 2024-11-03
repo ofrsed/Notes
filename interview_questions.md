@@ -2,7 +2,7 @@ Python
 
 ## Типы данных в python
 Неизменяемые: int , float, string, bool, frozen set
-Изменяемые: списки ( list ), словари ( dict ) и множества ( set )
+Изменяемые: list, dict и set
 
 ## Что такое Python?
 Python — высокоуровневый язык программирования с динамической типизацией.
