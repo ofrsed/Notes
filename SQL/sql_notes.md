@@ -395,6 +395,8 @@ HAVING COUNT(*) > 1;
 -   если в запросе, использующем DISTINCT, необходимо осуществить сортировку, то сделать это можно только по тем полям, которые указаны в операторе SELECT, в противном случае произойдет ошибка.
 
 ## Подзапросы
+### Некоррелированные подзапросы
+Выполняются один раз перед основным запросом
 Подзапрос — это запрос, вложенный в другой запрос.
 
 - ALL - истинно для всех значений
@@ -420,7 +422,7 @@ WHERE price < ANY (SELECT price
                    WHERE author = 'Chuck Palahniuk');
 ```
 
-### Примечание
+#### Примечание
 1. Результатом подзапроса является таблица, чтобы ее сипользовать нужно дать ей псевдоним
 ```
 SELECT *
@@ -433,3 +435,27 @@ SELECT (SELECT SUM(price)
         FROM Books) AS total;
 ```
 
+### Коррелированные подзапросы
+Выполняются для каждой строки
+```
+SELECT title, user_score
+FROM Books
+WHERE user_score > (SELECT user_score
+                    FROM Books AS InnerBooks
+                    WHERE id = Books.id - 1);
+```
+### Подзапросы с несколькими полями
+```
+SELECT title, critic_score, user_score
+FROM Books
+WHERE (critic_score, user_score) = (SELECT MIN(critic_score), MIN(user_score)
+                                    FROM Books);
+```
+
+#### Примечание
+1.  Если таблице присвоен псевдоним, то и обращение к полям этой таблицы по полному имени должно происходить только с помощью данного псевдонима.
+```
+SELECT B.title
+FROM Books AS B
+WHERE B.author = 'J.R.R. Tolkien';
+```
