@@ -118,6 +118,7 @@ TRIM(<ключевое слово LEADING, TRAILING или BOTH> <удаляем
   - TRAILING  — из конца строки
   - BOTH — из начала и конца строки
 ```
+`select TRIM( LEADING ' ' from product_name)`
 
 ## Числовые функции
 - `Операторы DIV` - целочисленное деление (прим. 11 MOD 2)
