@@ -655,3 +655,17 @@ CREATE TABLE IF NOT EXISTS Books
 `author VARCHAR(40) DEFAULT 'Unknown'` - определить значение по умолчанию
 ` id     INT CHECK (id > 0),` - запретить полю хранить значения, не удовлетворяющие заданному условию. 
 `CONSTRAINT positive_id CHECK (id > 0)` - изменить название проверки в check
+`id     INT PRIMARY KEY,` то же что и UNIQUE NOT NULL, но нагляднее
+`PRIMARY KEY (title, author)` - Составной первичный ключ, может быть только один
+`id     INT PRIMARY KEY AUTO_INCREMENT,` - автоматического заполнения поля рядом натуральных чисел. Теперь id можно не указывать .Может быть только один и у PRIMARY KEY. При удаления записей id не меняется, но чтобы менялись можно использовать счетчик TRUNCATE  `TRUNCATE Books;` - удаление всех строк в таблице
+`   FOREIGN KEY (author_id) REFERENCES Authors (id)` - Внешний ключ
+-`ON UPDATE` - поведение пи обновлении
+-`ON DELETE` - поведение при удалении
+  -RESTRICT - возниктнт ошибка
+  -CASCADE -  изменении или удалении данных в родительской таблице аналогичные действия будут автоматически применены и к связанным записям в дочерней таблице.
+  -SET NULL - при изменении или удалении данных в родительской таблице связанные записи в дочерней таблице в качестве значения внешнего ключа примут значение NULL
+```    FOREIGN KEY (author_id) REFERENCES Authors (id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE```
+
+- `DESCRIBE Books;` - получить информацию о полях таблицы   
