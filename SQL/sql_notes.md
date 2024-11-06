@@ -668,4 +668,32 @@ CREATE TABLE IF NOT EXISTS Books
         ON UPDATE CASCADE
         ON DELETE CASCADE```
 
-- `DESCRIBE Books;` - получить информацию о полях таблицы   
+- `DESCRIBE Books;` - получить информацию о полях таблицы
+
+## Удаление
+DROP TABLE Books; - удалить таблицу
+DROP TABLE IF EXISTS Books; - запрос с проверкой существования таблицы
+## Переименование таблицы
+RENAME TABLE Books TO OldBooks; - переименование таблицы
+## Обновление таблицы
+ALTER TABLE Books DROP COLUMN author; - удаление поля
+ALTER TABLE Books RENAME COLUMN author TO writer; - переименование поля
+ALTER TABLE Books ADD COLUMN release_year INT CHECK (release_year > 0); - добавить поле (в конец по умолчанию)
+ALTER TABLE Books ADD COLUMN release_year INT CHECK (release_year > 0) FIRST;- добавить в начало
+ALTER TABLE Books ADD COLUMN release_year INT CHECK (release_year > 0) AFTER title; - добавить после поля ...
+ALTER TABLE Books MODIFY COLUMN title VARCHAR(60) CHECK (title != ''); - обновить(полностью изменить) тип поля
+ALTER COLUMN <название поля> SET DEFAULT <значение по умолчанию> - задать полю значение по умолчанию
+ALTER TABLE Books ALTER COLUMN title DROP DEFAULT; - удалить значение по умолчанию
+ALTER TABLE Books ADD PRIMARY KEY (id); - добавить первичный ключ
+ALTER TABLE Books DROP PRIMARY KEY; - удалить первичный ключ
+
+ALTER TABLE Books ADD FOREIGN KEY (publisher) REFERENCES Publishers (name); - добавить внешний ключ
+ALTER TABLE Books DROP FOREIGN KEY publisher; - удалить внешний ключ
+
+ALTER TABLE Books ADD CHECK (title != ''); - дабавить проверку
+ALTER TABLE Books ADD CONSTRAINT title_is_not_empty_string CHECK (title != ''); добавить проверку с именем
+ALTER TABLE Books DROP CONSTRAINT title_is_not_empty_string; - удалить проверку
+
+```ALTER TABLE Books
+ADD COLUMN release_year INT,
+ADD COLUMN publisher VARCHAR(40);``` - несколько действий
