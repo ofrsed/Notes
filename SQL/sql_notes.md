@@ -627,3 +627,28 @@ REPLACE INTO Books (id, title, author, price)
 VALUES (1, 'Animal Farm', 'George Orwell', 9.99),
        (6, 'Lord of the Flies', 'William Golding', 5.99);
 ```
+
+
+## Создание таблиц
+```
+CREATE TABLE Books
+(
+    id     INT,
+    title  VARCHAR(40),
+    author VARCHAR(40)
+);
+
+CREATE TABLE IF NOT EXISTS Books
+(
+    id     INT,
+    title  VARCHAR(40),
+    author VARCHAR(40),
+    price  INT
+);
+```
+### Табличные ограничения
+`id     INT NOT NULL` - запрещает полю хранить значение NULL
+` id     INT UNIQUE` - запретить полю хранить повторяющиеся значения.
+`author VARCHAR(40) DEFAULT 'Unknown'` - определить значение по умолчанию
+` id     INT CHECK (id > 0),` - запретить полю хранить значения, не удовлетворяющие заданному условию. 
+`CONSTRAINT positive_id CHECK (id > 0)` - изменить название проверки в check
