@@ -147,10 +147,8 @@ TRIM(<ключевое слово LEADING, TRAILING или BOTH> <удаляем
 
 ## Функции даты и времени
 Временные интервалы
-```
-INTERVAL 1 YEAR
-INTERVAL '10-2' YEAR_MONTH
-```
+`INTERVAL 1 YEAR`
+`INTERVAL '10-2' YEAR_MONTH`
 
 Поддерживаемые единицы измерения - MICROSECOND, SECOND, MINUTE, HOUR, DAY, WEEK, MONTH, QUARTER, YEAR
 
