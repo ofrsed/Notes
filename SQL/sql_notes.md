@@ -646,6 +646,9 @@ CREATE TABLE IF NOT EXISTS Books
     price  INT
 );
 ```
+`surname VARCHAR(20) CHECK (surname != '') NOT NULL,`
+
+
 ### Табличные ограничения
 `id     INT NOT NULL` - запрещает полю хранить значение NULL
 ` id     INT UNIQUE` - запретить полю хранить повторяющиеся значения.
