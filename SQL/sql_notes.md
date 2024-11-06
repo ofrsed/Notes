@@ -658,7 +658,7 @@ CREATE TABLE IF NOT EXISTS Books
 `id     INT PRIMARY KEY,` то же что и UNIQUE NOT NULL, но нагляднее
 `PRIMARY KEY (title, author)` - Составной первичный ключ, может быть только один
 `id     INT PRIMARY KEY AUTO_INCREMENT,` - автоматического заполнения поля рядом натуральных чисел. Теперь id можно не указывать .Может быть только один и у PRIMARY KEY. При удаления записей id не меняется, но чтобы менялись можно использовать счетчик TRUNCATE  `TRUNCATE Books;` - удаление всех строк в таблице
-`   FOREIGN KEY (author_id) REFERENCES Authors (id)` - Внешний ключ
+` id INT,  FOREIGN KEY (author_id) REFERENCES Authors (id)` - Внешний ключ
 -`ON UPDATE` - поведение пи обновлении
 -`ON DELETE` - поведение при удалении
   -RESTRICT - возниктнт ошибка
