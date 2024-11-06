@@ -554,3 +554,76 @@ SET price = 9.99;
 5. При обновлении данных таблицы на основе данных из других таблиц с помощью соединения нельзя использовать сортировку и оператор LIMIT.
 6.  При обновлении данных таблицы на основе данных из других таблиц с помощью подзапроса в подзапросе нельзя обращаться к обновляемой таблице.
 7.  Если значение поля в какой-либо записи совпадает с обновляемым значением, оно не будет обновлено.
+
+
+## Удаление данных
+### Удаление записей 
+`DELETE FROM Books;` - удалить все из таблицы
+### Удаление отдельных записей
+
+```
+DELETE FROM Books
+WHERE title = 'Fight Club';
+```
+Удаление через соединение таблиц
+```
+DELETE FROM Books
+USING Books INNER JOIN Authors ON Books.author_id = Authors.id
+WHERE Authors.author = 'Chuck Palahniuk';```
+
+### Примечания
+1. Можно использовать ORDER BY и LIMIT без ограничений
+2. Оператор DELETE поддерживает дополнительное ключевое слово IGNORE
+```
+DELETE IGNORE FROM Authors
+WHERE author = 'Jerome Salinger';
+```
+3. Для удаления всех записей лучше испольщовать `TRUNCATE Books`, т.к. он работает быстрее
+4. При удалении данных из таблиц на основе данных из других таблиц с помощью соединения нельзя использовать сортировку.
+
+## Добавление данных
+### Добавление одной записи
+```
+INSERT INTO Books
+VALUES (6, 'Animal Farm', 'George Orwell', NULL);
+```
+```
+INSERT INTO Books (id, title, author, price)
+VALUES (6, 'Animal Farm', 'George Orwell', NULL);
+```
+### Добавление нескольких записей
+```
+INSERT INTO Books (id, title, author, price)
+VALUES (6, 'Animal Farm', 'George Orwell', NULL),
+       (7, 'Lord of the Flies', 'William Golding', 5.99);
+```
+### Добавление с помощью ключевого слова SET (можно добавить только одну)
+```
+INSERT INTO Books
+SET id = 6,
+    title = 'Animal Farm',
+    author = 'George Orwell',
+    price = 9.99;
+```
+### Добавление данных из других таблиц
+
+```
+INSERT INTO Books (id, title, author, price)
+SELECT id, title, author, price
+FROM NewBooks;
+```
+### Примечания
+1. В качестве значений добавляемой записи можно использовать результаты арифметических операций, а также возвращаемые значения различных функций.
+2. Значения по умолчанию можно не указывать
+3. Оператор INSERT поддерживает дополнительное ключевое слово IGNORE
+```
+INSERT IGNORE INTO Books (id, title, author, price)
+VALUES (1, 'Animal Farm', 'George Orwell', 9.99),
+       (6, 'Lord of the Flies', 'William Golding', 5.99);
+```
+4. В SQL существует оператор REPLACE, который работает как INSERT и UPDATE одновременно: запись добавляется в таблицу, если значение ее первичного ключа уникально. Если же оно совпадает со значением первичного ключа другой записи, то добавляемая запись заменяет эту другую запись.
+```
+REPLACE INTO Books (id, title, author, price)
+VALUES (1, 'Animal Farm', 'George Orwell', 9.99),
+       (6, 'Lord of the Flies', 'William Golding', 5.99);
+```
