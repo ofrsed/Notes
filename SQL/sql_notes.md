@@ -682,7 +682,7 @@ ALTER TABLE Books ADD COLUMN release_year INT CHECK (release_year > 0); - доб
 ALTER TABLE Books ADD COLUMN release_year INT CHECK (release_year > 0) FIRST;- добавить в начало
 ALTER TABLE Books ADD COLUMN release_year INT CHECK (release_year > 0) AFTER title; - добавить после поля ...
 ALTER TABLE Books MODIFY COLUMN title VARCHAR(60) CHECK (title != ''); - обновить(полностью изменить) тип поля
-ALTER COLUMN <название поля> SET DEFAULT <значение по умолчанию> - задать полю значение по умолчанию
+ALTER TABLE Books ALTER COLUMN title SET DEFAULT 'Untitled'; - задать полю значение по умолчанию
 ALTER TABLE Books ALTER COLUMN title DROP DEFAULT; - удалить значение по умолчанию
 ALTER TABLE Books ADD PRIMARY KEY (id); - добавить первичный ключ
 ALTER TABLE Books DROP PRIMARY KEY; - удалить первичный ключ
