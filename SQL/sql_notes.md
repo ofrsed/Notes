@@ -577,7 +577,8 @@ WHERE title = 'Fight Club';
 ```
 DELETE FROM Books
 USING Books INNER JOIN Authors ON Books.author_id = Authors.id
-WHERE Authors.author = 'Chuck Palahniuk';```
+WHERE Authors.author = 'Chuck Palahniuk';
+```
 
 ### Примечания
 1. Можно использовать ORDER BY и LIMIT без ограничений
