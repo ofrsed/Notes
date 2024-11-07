@@ -717,3 +717,58 @@ ALTER TABLE Books
 ADD COLUMN release_year INT,
 ADD COLUMN publisher VARCHAR(40);
 ```
+
+
+## Триггеры
+Предназначены для автоматического выполнения действий при изменении данных
+```
+DELIMITER //
+CREATE TRIGGER <имя триггера>
+<время срабатывания триггера> <операция, которая вызывает триггер>
+ON <имя таблицы>
+FOR EACH ROW
+BEGIN
+    <тело триггера>;
+END //
+DELIMITER ;
+```
+- Время срабатывания
+  - BEFORE - перед
+  - AFTER - после
+- Операция, которая вызывает триггер
+  - INSERT
+  - DELETE
+  - UPDATE
+
+- Доступ к значениям записи
+  - BEFORE INSERT — имеет доступ к значениям добавляемой записи; может изменять значения добавляемой записи
+  - AFTER INSERT — имеет доступ к значениям добавленной записи
+  - BEFORE UPDATE — имеет доступ к старым и новым значениям обновляемой записи; может изменять новые значения обновляемой записи
+  - AFTER UPDATE — имеет доступ к старым и новым значениям обновленной записи
+  - BEFORE DELETE — имеет доступ к значениям удаляемой записи
+  - AFTER DELETE — имеет доступ к значениям удаленной записи
+  ```
+
+NEW - обратиться к новым данным
+OLD - обратиться к старым данным
+  
+  DELIMITER //
+CREATE TRIGGER name_and_surname_formatting
+BEFORE INSERT
+ON Authors
+FOR EACH ROW
+BEGIN
+    SET NEW.name = CONCAT(UPPER(LEFT(NEW.name, 1)), LOWER(SUBSTRING(NEW.name, 2)));
+    SET NEW.surname= CONCAT(UPPER(LEFT(NEW.surname, 1)), LOWER(SUBSTRING(NEW.surname, 2)));
+END //
+DELIMITER ;
+
+INSERT INTO Authors (name, surname) 
+VALUES ('LEO', 'TOLSTOY'),
+       ('william', 'shakespeare'),
+       ('fYODOr', 'dOSTOYEVSKy');
+       
+SELECT id, name, surname
+FROM Authors;
+```
+
