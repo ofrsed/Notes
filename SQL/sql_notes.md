@@ -474,6 +474,9 @@ WHERE B.author = 'J.R.R. Tolkien';
 
 
 ## Джоины
+<div id="header" align="center">
+  <img src="https://github.com/ofrsed/Notes/blob/main/SQL/joins.png" width="600"/>
+</div>
 ### INNER JOIN 
 Внутреннее соединение. Соединении двух таблиц отбираются только те пары записей, для которых выполняется условие соединения.
 
