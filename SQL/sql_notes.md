@@ -751,7 +751,8 @@ DELIMITER ;
 
 NEW - обратиться к новым данным
 OLD - обратиться к старым данным
-  
+
+```
   DELIMITER //
 CREATE TRIGGER name_and_surname_formatting
 BEFORE INSERT
