@@ -965,3 +965,97 @@ SELECT @min_price, @max_price;
 #### Глобальные
 Указывается администратором призапуске БД, и неизменяемы
 `SET @@global.sort_buffer_size := 262146;` - установить глобально
+
+## Пользовательские функции
+Пользовательские функции - Функции, которые не являются встроенными, а определены пользователем
+Бывают детерминированные (при одних и тех же данных возвращают один и тот же результат) и недетерминированные (при одних и тех же данных возвращают разный результат)
+
+### Создание пользовательских функций
+```
+DELIMITER //
+CREATE FUNCTION IS_EVEN(number INT)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    RETURN IF(number MOD 2 = 0, 1, 0);
+END //
+DELIMITER ;
+
+SELECT IS_EVEN(10),
+       IS_EVEN(15);
+```
+
+```
+DELIMITER //
+CREATE FUNCTION CAPITALIZE(string TEXT)
+RETURNS TEXT
+DETERMINISTIC
+BEGIN
+    RETURN CONCAT(UPPER(LEFT(string, 1)), LOWER(SUBSTRING(string, 2)));
+END //
+DELIMITER ;
+
+SELECT CAPITALIZE('beegeek'),
+       CAPITALIZE('BeeGeek'),
+       CAPITALIZE('BEEGEEK');
+```
+
+```
+
+DELIMITER //
+CREATE FUNCTION STUDENTS_WITH_GRADE(score INT)
+RETURNS INT
+NOT DETERMINISTIC
+READS SQL DATA  -- работает с БД
+BEGIN
+    RETURN (SELECT COUNT(*)
+            FROM Math
+            WHERE grade = score);
+END //
+DELIMITER ;
+
+SELECT STUDENTS_WITH_GRADE(4),
+       STUDENTS_WITH_GRADE(5);
+```
+
+Определение локальных переменных в функции (локальные переменные доступны только в этой функции)
+```
+DELIMITER //
+CREATE FUNCTION MIN_MAX_GRADE()
+RETURNS TEXT
+NOT DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE min_grade INT;
+    DECLARE max_grade INT;
+    SET min_grade := (SELECT MIN(grade)
+                      FROM Math);
+    SET max_grade := (SELECT MAX(grade)
+                      FROM Math);
+    RETURN CONCAT('Lowest grade: ', min_grade, ', Highest grade: ', max_grade);
+END //
+DELIMITER ;
+
+SELECT MIN_MAX_GRADE();
+```
+
+#### Примечания
+1. Функции, создаваемые с помощью оператора CREATE FUNCTION, являются скалярными, то есть всегда возвращают единственное значение.
+2. При определении локальной переменной для нее можно указать значение по умолчанию, которое переменная примет сразу же после определения. `DECLARE variable INT DEFAULT 0`
+3. Можно добавить комментарии
+```
+DELIMITER //
+CREATE FUNCTION VECTOR_ABS(x INT, y INT)
+RETURNS FLOAT
+DETERMINISTIC
+COMMENT 'Функция возвращает модуль двумерного вектора'
+BEGIN
+    RETURN SQRT(POW(x, 2) + POW(y, 2));
+END //
+DELIMITER ;
+
+SELECT VECTOR_ABS(3, 4),
+       VECTOR_ABS(6, 8);
+```
+4. Пользовательская функция может быть удалена после создания. `DROP FUNCTION IS_EVEN;`
+5. Пользовательские функции нечувствительны к регистру
