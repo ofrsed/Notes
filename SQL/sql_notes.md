@@ -1165,3 +1165,19 @@ CALL HIGH_GRADE_STUDENTS;
 2. Хранимую процедуру можно дополнить строкой документации. Для этого перед блоком BEGIN END необходимо указать ключевое слово COMMENT, а затем предоставить строку, содержащую краткое описание поведения процедуры.
 3. Хранимая процедура может быть удалена после создания. `DROP PROCEDURE HIGH_GRADE_STUDENTS;`
 4. Хранимые процедуры нечувствительны к регистру,
+
+
+### Процедура с входными параметрами
+```
+
+DELIMITER //
+CREATE PROCEDURE STUDENTS_WITH_GRADE_BETWEEN(IN min_score INT, IN max_score INT)
+BEGIN
+    SELECT id, name, surname, grade
+    FROM Math
+    WHERE grade BETWEEN min_score AND max_score;
+END //
+DELIMITER ;
+
+CALL STUDENTS_WITH_GRADE_BETWEEN(2, 4);
+```
