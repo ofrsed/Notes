@@ -1073,3 +1073,71 @@ SELECT VECTOR_ABS(3, 4),
 4. Пользовательская функция может быть удалена после создания. `DROP FUNCTION IS_EVEN;`
 5. Пользовательские функции нечувствительны к регистру
 6. Если используется пара ключевых слов NOT DETERMINISTIC, обязательно нужно пояснить, почему функция является недетерминированной. Если функция работает с информацией, хранящейся в таблицах базы данных, после NOT DETERMINISTIC с новой строки необходимо добавить READS SQL DATA. Если функция не обращается к таблицам базы данных, но при этом выполняет вычисления со случайным результатом, после NOT DETERMINISTIC с новой строки необходимо добавить NO SQL.
+
+## IF-ELSEIF-ELSE
+
+```
+IF <первое проверяемое условие> THEN
+    <одна или несколько операций>;
+ELSEIF <второе проверяемое условие> THEN
+    <одна или несколько операций>;
+ELSEIF <третье проверяемое условие> THEN
+    <одна или несколько операций>;
+...
+ELSEIF <n-ое проверяемое условие> THEN
+    <одна или несколько операций>;
+ELSE <одна или несколько операций>;
+END IF;
+```
+
+```
+
+DELIMITER //
+CREATE FUNCTION ANALYSE(number INT)
+RETURNS TEXT
+DETERMINISTIC
+BEGIN
+    IF number > 0 THEN
+        RETURN 'Positive';
+    ELSEIF number < 0 THEN
+        RETURN 'Negative';
+    ELSE
+        RETURN 'Zero';
+    END IF;
+END //
+DELIMITER ;
+
+SELECT ANALYSE(5),
+       ANALYSE(-10),
+       ANALYSE(0);
+```
+
+## Цикл WHILE
+```
+
+DELIMITER //
+CREATE FUNCTION CALCULATE_HOURS(minutes INT)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE result INT DEFAULT 0;                -- конечное количество часов
+   
+    WHILE minutes >= 60 DO                       -- проверяем, что количество минут больше или равно 60
+        SET result := result + 1;                -- увеличиваем количество часов на единицу
+        SET minutes := minutes - 60;             -- уменьшаем количество минут на 60 минут (1 час)
+    END WHILE;
+   
+    RETURN result;
+END //
+DELIMITER ;
+
+SELECT CALCULATE_HOURS(30),
+       CALCULATE_HOURS(60),
+       CALCULATE_HOURS(95),
+       CALCULATE_HOURS(125);
+```
+
+### Примечания
+1. Условную конструкцию IF-ELSEIF-ELSE и цикл WHILE нельзя использовать вне функций.
+2. SQL ориентирован на выполнение запросов, а не на вычисления, поэтому, несмотря на то что язык позволяет реализовывать сложные конструкции с помощью циклов и условий, рекомендуется избегать их применения ради поддержания оптимальной производительности.
+3. ELSEIF и ELSE необязательные блоки
