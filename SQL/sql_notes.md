@@ -1181,3 +1181,61 @@ DELIMITER ;
 
 CALL STUDENTS_WITH_GRADE_BETWEEN(2, 4);
 ```
+
+## Процедура с выходными параметрами
+```
+
+DELIMITER //
+CREATE PROCEDURE MAX_GRADE(OUT score INT)
+BEGIN
+    SET score := (SELECT MAX(grade)
+                  FROM Math);
+END //
+DELIMITER ;
+
+SET @max_grade = NULL;
+
+CALL MAX_GRADE(@max_grade);
+
+SELECT @max_grade;
+```
+
+```
+
+DELIMITER //
+CREATE PROCEDURE MIN_MAX_GRADES(OUT min_score INT, OUT max_score INT)
+BEGIN
+    SET min_score := (SELECT MIN(grade)
+                      FROM Math),
+        max_score := (SELECT MAX(grade)
+                      FROM Math);
+END //
+DELIMITER ;
+
+SET @min_grade := NULL,
+    @max_grade := NULL;
+
+CALL MIN_MAX_GRADES(@min_grade, @max_grade);
+
+SELECT @min_grade, @max_grade;
+```
+
+### Примечания
+1. Хранимые процедуры поддерживают дополнительный вид параметров, определяемый с помощью ключевого слова INOUT. Параметр, перед именем которого указано такое ключевое слово, ведет себя как входной и выходной одновременно.
+2. Пользовательскую переменную, которая будет передана в качестве аргумента выходному параметру, можно не создавать явно. В таком случае переменная будет создана автоматически.
+
+```
+
+DELIMITER //
+CREATE PROCEDURE MAX_GRADE(OUT score INT)
+BEGIN
+    SELECT MAX(grade) INTO score
+    FROM Math;
+END //
+DELIMITER ;
+
+CALL MAX_GRADE(@max_grade);
+
+SELECT @max_grade;
+```
+3. Параметры процедуры по умолчанию являются входными, поэтому ключевое слово IN указывать необязательно.
