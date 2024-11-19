@@ -1311,7 +1311,7 @@ FROM Employees;
   - `n PRECEDING` — n-ая запись перед текущей
   - `n FOLLOWING` — n-ая запись после текущей
   - `UNBOUNDED PRECEDING` — самая первая запись окна (или секции окна, если было применено секционирование)
-
+  - `UNBOUNDED FOLLOWING` — самая последняя запись окна (или секции окна, если было применено секционирование)
 ```
 SELECT id, full_name, salary,
        AVG(salary) OVER (ORDER BY id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS avg_salary
