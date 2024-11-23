@@ -2,8 +2,8 @@
 
 | Windows | Linux |
 | Диски `C:\`,`D:\`,`F:\` | В виде дерева с единой точкой входа `/` |
-| Командныее интепретаторы |
-| PowerShell, cmd.exe | sh, bash, csh, ksh, zsh... |
+
+| Командныее интепретаторы  PowerShell, cmd.exe | sh, bash, csh, ksh, zsh... |
 | --- | --- |
 | --- | --- |
 | --- | --- |
