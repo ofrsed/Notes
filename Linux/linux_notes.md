@@ -187,14 +187,58 @@ drwxrwxr-x — dir
 - `chown <новый владелец>:<группа> <файл>` - изменить владельца
 
 
-- `` - 
-- `` - 
-- `` - 
-- `` - 
-- `` - 
-- `` - 
-- `` - 
-- `` - 
+# Службы
+
+Процесс - программа, которая в данные момент выполняется в системе
+
+Служба - программа выполняющаяся в фоновом режиме
+
+Демон - процесс не имеющий ввода с терминала, реагирует на определенное событие и принимает специальные мигналы от ОС
+
+- `wc -l` - количество процессов (каталогов в /proc) 
+- `ps -elf` - таблица процессов 
+- `pstree` - дерево процессов
+- `kill <PID>` - убить процесс
+- `systemd` - система управления процессами
+
+`/opt/agentx/app.sh`
+
+- Чтобы запустить скрипт в фоновом режиме, мы должны определить его как службу
+  - `cat /etc/systemd/system/agentx.service` - создали Unit файл службы. Unit - служба, которыми может управлять система (думать как о заданиях)
+
+
+- `systemctl start agentx.service` - запустить службу в фоновом режиме
+- `systemctl status agentx.service` - проверить статус
+- `systemctl stop agentx.service` - остановить службу
+- `sudo systemctl enable agentx.service` - поставить автозапуск при включении
+- `sudo systemctl disable agentx.service` -убрать автозапуск при включении
+- `systemctl deamon-reload` - перезапуск демонов
+- `sudo journalctl -u <название службы>` - логи службы
+- `systemctl show <название службы>` - параметры службы
+- `systemctl list-units --all` - все процессы
+```
+
+[Unit]
+Description=Simple Flask App
+Documentation=htths://<>   ##  Логи
+After=mysql.service ## Служба запускается как будт готова БД
+
+[Service]
+ExecStart=/opt/agentx/app.sh -address "8080"  Запустить в фоновом режиме
+Environment=MYSQL_HOST=db01  ## Название хоста
+
+
+
+Restart=on-failure      ## Перезапуск при отказе службы
+RestartSec=15      ## Время ожаидания
+User=agentx  ## Запуск для определенного пользователя
+
+[Install]
+WantedBy=graphical.target   ## Включение при загрузке системы
+
+
+```
+
 - `` - 
 - `` - 
 - `` - 
