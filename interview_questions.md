@@ -1,5 +1,5 @@
 ## Модель OSI
-<img src="https://github.com/ofrsed/Notes/blob/main/osi-network-model-layers.svg" width="600px"/>
+<img src="https://github.com/ofrsed/Notes/blob/main/osi-network-model-layers.svg" width="1200px"/>
 
 
 Python
