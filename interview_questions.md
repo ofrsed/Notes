@@ -1,8 +1,17 @@
 Python
 
 ## Типы данных в python
-Неизменяемые: int , float, string, bool, frozen set
-Изменяемые: list, dict и set
+- Неизменяемые:
+  - int
+  - float
+  - string
+  - bool
+  - frozen set
+  - tuple
+- Изменяемые:
+  - list
+  - dict
+  - set
 
 ## Принципы ООП
 - Принципы:
