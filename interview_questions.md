@@ -1,3 +1,7 @@
+## Модель OSI
+<img src="https://github.com/ofrsed/Notes/blob/main/osi-network-model-layers.svg" width="600px"/>
+
+
 Python
 
 ## Типы данных в python
