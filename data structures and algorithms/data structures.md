@@ -123,6 +123,11 @@ O(1)
 в python лучше сделать через `from collections import deque`
 
 # Деревья
+
+## Несбалансированное дерево
+Подвершины деревьев отличаются более чем на 1 уровень
+<img src="https://github.com/ofrsed/Notes/blob/main/data%20structures%20and%20algorithms/img/unbalanced%20tree.png" alt="python" width="600"  />;
+
 ## Бинарное дерево
 O(log n)
 <img src="https://github.com/ofrsed/Notes/blob/main/data%20structures%20and%20algorithms/img/%D0%B1%D0%B8%D0%BD%D0%B0%D1%80%D0%BD%D0%BE%D0%B5%20%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE.png" alt="python" width="600"  />;
