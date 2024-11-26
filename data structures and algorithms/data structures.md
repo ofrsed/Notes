@@ -1,4 +1,4 @@
-  <img src="https://github.com/ofrsed/Notes/blob/main/data%20structures%20and%20algorithms/O.png" title="python" alt="python" width="200"/>;
+  <img src="https://github.com/ofrsed/Notes/blob/main/data%20structures%20and%20algorithms/O.png" title="python" alt="python" width="2000"/>;
 
 
 # Бинарный поиск (log n)
