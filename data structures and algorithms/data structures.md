@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/60297164-babc-4012-b600-748d16241c69)  <img src="https://github.com/ofrsed/Notes/blob/main/data%20structures%20and%20algorithms/O.png" title="python" alt="python" width="600"  />;
+<img src="https://github.com/ofrsed/Notes/blob/main/data%20structures%20and%20algorithms/O.png" title="python" alt="python" width="600"  />;
 
 `О большое` - запись для оценки худшего случая, или для ограничения заданной функции сверху. Это позволяет сделать асимптотическую оценку верхней границы скорости роста времени выполнения алгоритма.
 
