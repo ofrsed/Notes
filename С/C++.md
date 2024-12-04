@@ -48,5 +48,8 @@ d4 = 5e-3;  5 * 10^-3
 `sizeof<имя переменной>`
 
 
+![image](https://github.com/user-attachments/assets/53718c6e-1f76-4f2f-b656-627c67a08457)
+
+
 last
 https://rutube.ru/video/91497eb53573c6455d8bc8fcfc0f330b/?playlist=539096
