@@ -16,5 +16,10 @@
 
 - unsigned - беззнаковый (`unsigned char fl_view;`)
 - signed - знаковый (`signed char fl_view;`)
+Применяются только к целочисленным
 
 short, int, long, long long - по умолчанию знаковые (кроме char)
+Вещественные всегда знаковые
+
+last
+https://rutube.ru/video/99e39389f1812c998a528f8cd7e4f3f9/?playlist=539096
