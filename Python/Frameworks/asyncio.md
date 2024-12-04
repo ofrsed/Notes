@@ -155,17 +155,12 @@ asyncio.run(main())
     - `asyncio.FIRST_COMPLETED` - возвращает управление (т.е., "разблокирует" выполнение текущей корутины), как только любая из ожидаемых Task/Future будет выполнена или отменена.
     - `asyncio.FIRST_EXCEPTION` - возвращает управление, как только любая из ожидаемых задач завершится с исключением
     - `asyncio.ALL_COMPLETED` - значение по умолчанию, возвращает управление только после того, как все ожидаемые задачи будут выполнены или отменены.
-    - `` - 
-    - `` - 
+
  
 Особенности:
 1. Функция asyncio.wait() не вызывает исключение asyncio.TimeoutError при наступлении таймаута. Задачи, которые не были выполнены к этому моменту, просто возвращаются во множестве pending и продолжают свое выполнение в фоновом режиме.
 2. В отличие от wait_for(), wait() не отменяет выполнение ожидаемых задач при наступлении таймаута.
-3. 
-4. 
-5. 
-6. 
-7. 
+
 
 ```
 import asyncio
@@ -206,6 +201,35 @@ async def main():
 # Запускаем главную корутину
 asyncio.run(main())
 ```
+
+## asyncio.as_completed()
+- `asyncio.as_completed(aws, *, timeout=None)` - возвращает результат каждой задачи по мере окончания, можно с этим результатом что то сделать и ожидать следующий
+
+```
+import asyncio
+import random
+
+async def task(num):
+    await asyncio.sleep(delay := random.random())
+    return f'Task {num} completed, {delay=:.3f}'
+
+async def main():
+    tasks = [asyncio.create_task(task(i)) for i in range(5)]
+    
+    for completed_task in asyncio.as_completed(tasks):
+        # completed_task - объект корутины, создаваемый функцией as_completed(), возвращающий результат завершенной задачи.
+        result = await completed_task
+        print(result)
+
+asyncio.run(main())
+```
+
+`asyncio.gather(*tasks)` - возвращает результаты (все разом) каждой задачи в том порядке, в котором задачи были поданы.
+
+`asyncio.wait()` - как gather, но с возможностями до 1 результат и 1 ошибки, если ошибок нет, то возвращает все результаты разом
+
+`asyncio.as_completed()` - возвращает результат каждой задачи по мере окончания, можно с этим результатом что то сделать и ожидать следующий
+
 ## asyncio.shield()
 - `` -
   - `` -
