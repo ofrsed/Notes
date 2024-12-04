@@ -148,21 +148,64 @@ asyncio.run(main())
 
 
 ## asyncio.wait()
-- `asyncio.wait(aws, *, timeout=None, return_when=asyncio.ALL_COMPLETED)` - функция используется для конкурентного запуска  экземпляров Future и Task из итерируемого aws.
+- `asyncio.wait(aws, *, timeout=None, return_when=asyncio.ALL_COMPLETED)` - функция используется для конкурентного запуска  экземпляров Future и Task из итерируемого aws. Функция возвращает два множества Tasks/Futures: (done, pending). done: Множество задач, которые были выполнены или отменены. pending: Множество задач, которые ещё не были выполнены
   - `aws` - Итерируемый объект, содержащий awaitable объекты (Tasks/Futures). Этот итерируемый объект не должен быть пустым.
   - `timeout=None` - Максимальное количество секунд ожидания выполнения. 
   - `return_when=asyncio.ALL_COMPLETED` - Указывает, когда функция  asyncio.wait() должна вернуть управление. Может принимать одну из констант: FIRST_COMPLETED, FIRST_EXCEPTION, ALL_COMPLETED
+    - `asyncio.FIRST_COMPLETED` - возвращает управление (т.е., "разблокирует" выполнение текущей корутины), как только любая из ожидаемых Task/Future будет выполнена или отменена.
+    - `asyncio.FIRST_EXCEPTION` - возвращает управление, как только любая из ожидаемых задач завершится с исключением
+    - `asyncio.ALL_COMPLETED` - значение по умолчанию, возвращает управление только после того, как все ожидаемые задачи будут выполнены или отменены.
+    - `` - 
     - `` - 
  
 Особенности:
-1. 
-2. 
+1. Функция asyncio.wait() не вызывает исключение asyncio.TimeoutError при наступлении таймаута. Задачи, которые не были выполнены к этому моменту, просто возвращаются во множестве pending и продолжают свое выполнение в фоновом режиме.
+2. В отличие от wait_for(), wait() не отменяет выполнение ожидаемых задач при наступлении таймаута.
 3. 
 4. 
 5. 
 6. 
 7. 
-8. 
+
+```
+import asyncio
+
+async def task_slow():
+    print("Starting slow task...")
+    await asyncio.sleep(5)
+    print("Slow task completed!")
+
+async def task_fast():
+    print("Starting fast task...")
+    await asyncio.sleep(2)
+    print("Fast task completed!")
+
+async def main():
+    # Создаем задачи
+    slow = asyncio.create_task(task_slow())
+    fast = asyncio.create_task(task_fast())
+    
+    # Ожидаем 3 секунды и смотрим, какие задачи завершились, а какие еще выполняются
+    done, pending = await asyncio.wait([slow, fast], timeout=3)
+    
+    # Печатаем результаты
+    for task in done:
+        print(f"Task {task} is done!")
+    
+    for task in pending:
+        print(f"Task {task} is still pending...")
+    
+    # Предположим, мы хотим продолжить выполнение оставшихся задач после короткой паузы
+    print("Waiting a bit before resuming pending tasks...")
+    await asyncio.sleep(2)
+    
+    # Продолжаем выполнение оставшихся задач
+    for task in pending:
+        await task
+
+# Запускаем главную корутину
+asyncio.run(main())
+```
 ## asyncio.shield()
 - `` -
   - `` -
