@@ -16,3 +16,5 @@
 
 - unsigned - беззнаковый (`unsigned char fl_view;`)
 - signed - знаковый (`signed char fl_view;`)
+
+short, int, long, long long - по умолчанию знаковые (кроме char)
