@@ -13,3 +13,6 @@
 | float | 4 | 4 | 4 | Вещественный | … |
 | double | 8 | 8 | 8 | Вещественный | … |
 | long double | 10 | 10 | 10 | Вещественный | … |
+
+- unsigned - беззнаковый (`unsigned char fl_view;`)
+- signed - знаковый (`signed char fl_view;`)
