@@ -33,17 +33,28 @@ docker hub - реестр, хранилище image`й
 - приложение
 
 `docker images` - Перечень images которые есть в системе
+
 `docker run hello-world` - автоматически качается latest
+
 `docker run hello-world:1.0.0` - скачать определенную версию
+
+`docker run --rm hello-world:latest` - запуск, чтобы как остановится, автоматичемки удалялся
 
 | REPOSITORY | TAG | IMAGE ID | CREATED | SIZE |
 | --- | --- | --- | --- | --- |
 | Имя репозитормя | версия | ID | дата создания | размер |
 
 `docker ps` - вывести запущенные контейнеры
+
 `docker ps -a` - вывести все контейнеры
+
+`docker ps -a -q` или `docker ps -aq` - вывести id контейнеров
 
 | CONTAINER ID | IMAGE | COMMAND | CREATED | STATUS | PORTS | NAMES |
 | --- | --- | --- | --- | --- | --- | --- |
 | уникальный ID | его image | внутренняя команда, которая была выполнена (она записана в images) | дата создания | Статус (Exited (0) - завершился корректно | порт | имена контейнеров (если не указываем, дается автоматически)|
+
+`docker rm <id>` - удалить контейнер 
+`docker rm $(docker ps -aq)` - удалить все не работающие контейнеры по списку id
+`docker container prune` - удалить все не работающие контейнеры 
 
