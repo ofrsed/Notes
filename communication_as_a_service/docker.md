@@ -145,3 +145,90 @@ CMD ["python", "app.py"]    <-  команды выполняются при с�
 
 
 docker build . -t <имя моего образа>:<номер версии> - создать сборку
+
+Docker Compose
+
+`compose.yml`
+
+специальный компонент, который позволяет управлять и создавать одновременно множеством контейнеров. в одной сети
+
+позволяет с помощью файла в формате yml описать создание одного\многих контейнеров и полностью сконфигурировать работу
+
+```
+services:
+  web:
+    image: nginx
+    container_name: server
+    ports:
+      - 127.0.0.1:8000:80
+    volumes:
+      - ./site:/usr/share/nginx/html
+```
+
+`docker compose up -d` - запустить compose
+`docker compose down` - остановить
+
+
+`docker network ls`
+
+-e - переменная окружения
+
+```
+NETWORK ID     NAME      DRIVER    SCOPE
+5db1778a4da5   bridge    bridge    local  <- помогает объединить контейнеры в одну сеть и предоставить порты на host
+66d65ec80785   host      host      local  <- напрямую предоставить доступ к подключению по ip и портам самого хоста (не делат сеть
+aa56384cd1ff   none      null      local  <-
+```
+
+Делаем сеть
+docker network create mynetwork
+
+Запускаем контейнер с монго
+docker run --name mymongo --network mynetwork -d mongo
+
+Запускаем контейнер с mongo-express
+docker run --name dbbrowser --network mynetwork -e ME_CONFIG_MONGODB_SERVER=mymongo -p 8081:8081 -d mongo-express
+
+Запускаем контейнер checker
+docker build -t app ./checker
+docker run --name myapp --network mynetwork -d app
+
+Запускаем наш бек/фронт сервис
+docker build -t flask ./plot
+docker run --name plot --network mynetwork -p 5000:5000 -d flask
+
+```
+services:
+  mymongo:
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+
+  dbbrowser:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=example
+      - ME_CONFIG_MONGODB_URL=mongodb://root:example@mymongo:27017/
+    depends_on:  #Зависимость от ...
+      - mymongo
+    
+  api:
+    build: ./checker  #указываем путь к Dockerfile
+    image: app:1.0.0  #имя
+    depends_on: 
+      - mymongo
+  
+  web:
+    build: ./plot
+    image: plot:1.0.0
+    ports:
+      - 127.0.0.1:5000:5000
+    depends_on:
+      - api
+```
