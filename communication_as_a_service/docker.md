@@ -46,6 +46,13 @@ docker hub - реестр, хранилище image`й
 
 `docker run --name hello hello-world:latest` - задать имя при запуске
 
+`docker run -d --name server nginx` - `-d` - отсоединенный, запустить в отдельноп процессе, запустить как демон
+
+`docker run -d -p 8000:80 --name server nginx` - порт на хосте будет пробрасываться на порт 80 внутрь контейнера
+
+`docker run -d -p 127.0.0.1:8000:80 --name server nginx` - связываем только localhost
+
+`docker exec -it <идя контейнера> <команду которую нужно выполнить (bash, sh)>` - открыть дополнительный процесс
 
 | REPOSITORY | TAG | IMAGE ID | CREATED | SIZE |
 | --- | --- | --- | --- | --- |
@@ -56,6 +63,8 @@ docker hub - реестр, хранилище image`й
 `docker ps -a` - вывести все контейнеры
 
 `docker ps -a -q` или `docker ps -aq` - вывести id контейнеров
+
+`docker container inspect <имя контейнера>` - информация конттейнера
 
 | CONTAINER ID | IMAGE | COMMAND | CREATED | STATUS | PORTS | NAMES |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -68,6 +77,12 @@ docker hub - реестр, хранилище image`й
 `docker rm $(docker ps -aq)` - удалить все не работающие контейнеры по списку id
 
 `docker container prune` - удалить все не работающие контейнеры 
+
+`docker system prune` - удалить все 
+
+`docker system prune -a` - удалить все (удалит image)
+
+`docker builder prune` - удалить кэш сборок
 
 `docker start <имя контейнера>` - запуск контейнера (фоново)
 
@@ -110,5 +125,23 @@ COPY . .   <- откуда и куда
 
 CMD ["python", "app.py"]    <-  команды выполняются при старте контейнера
 ```
+
+```
+FROM python:3.11.9-alpine    <- название образа на основе которого собираем
+
+WORKDIR /app   <- рабочая директория в контейнере
+
+ENV PYTHONUNBUFFERED=1 <- настройка для python, чтобы STDOUT выводил в терминал все
+
+COPY requirements.txt  . 
+
+RUN pip install --upgrate pip
+RUN pip install --no-cache-dir -r requirements.txt      <- чтобы не сохранялся кэш библиотеки (чтобы меньше весил обяз.)
+
+COPY . .   <- откуда и куда
+
+CMD ["python", "app.py"]    <-  команды выполняются при старте контейнера
+```
+
 
 docker build . -t <имя моего образа>:<номер версии> - создать сборку
