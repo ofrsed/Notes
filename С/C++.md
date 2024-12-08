@@ -55,6 +55,14 @@ d4 = 5e-3;  5 * 10^-3
 
 print formatted (форматированный вывод)
 
-int printf(const char* format, ... );
+- int printf(const char* format, ... );
+  - format - указатель на строку, в которой определен формат для вывода информации в стандартный поток stdout
+
+Спецификаторы преобразований:
+![image](https://github.com/user-attachments/assets/7f4c52f4-1449-4f46-8b49-99709c794bbc)
+![image](https://github.com/user-attachments/assets/671b9f9d-208b-4ac6-abcd-4dc5f43fc2a2)
+
+
+
 last
 https://rutube.ru/video/91497eb53573c6455d8bc8fcfc0f330b/?playlist=539096
