@@ -335,7 +335,10 @@ asyncio.run(main())
   - task.exception() — возвращает исключение, которое было выброшено при выполнении задачи.
 - Получение и изменение имени задачи:
   - task.get_name() — возвращает имя задачи
+    - `print(f"Имя задачи: {asyncio.current_task().get_name()}") `
   - task.set_name(name) — устанавливает имя задачи.
+    - `task = asyncio.create_task(my_coroutine(), name="my_task")`
+    - `asyncio.current_task().set_name("new_name")`
 - Отмена задач и работа с отмененными задачами:
   - task.cancel() — отменяет выполнение задачи.
   - task.cancelled() — возвращает True, если задача была отменена до ее выполнения.
