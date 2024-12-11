@@ -1,6 +1,6 @@
-![image](https://github.com/user-attachments/assets/631a97dc-ca89-478a-8630-e9b95e07ec9a)
+![image](https://github.com/user-attachments/assets/f99c7ff7-fc2e-4083-8f83-bbbfd6f7fdf1)
 
-Брокер сообщений - посредники между поставщиком сообщений и потребителем сообщений
+Брокер сообщений - это какой-то сервис, который может хранить сообщения в упорядоченном виде, в который кто-то (producer, publisher) может отправить сообщение (enqueue), а кто-то (consumer, subscriber) его оттуда прочитать (dequeue).
 
 
 producer - издатель сообщений
