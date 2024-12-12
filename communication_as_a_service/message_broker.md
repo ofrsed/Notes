@@ -61,6 +61,7 @@ async def on_message(message: DeliveredMessage):
 consumer.py
 
 >>>
+
 ```
 async def main():
     # Подключение к RabbitMQ
