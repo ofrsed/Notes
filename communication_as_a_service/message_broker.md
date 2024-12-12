@@ -61,7 +61,7 @@ async def on_message(message: DeliveredMessage):
 consumer.py
 
 >>>
-
+```
 async def main():
     # Подключение к RabbitMQ
     connection = await aiormq.connect("amqp://rabbitmqlogin:rabbitmqpassword@localhost/")
@@ -93,5 +93,8 @@ async def main():
 
 
 asyncio.run(main())
+```
 
 <<<
+
+вот
