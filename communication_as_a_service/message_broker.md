@@ -39,3 +39,59 @@ __Consumer__ (консьюмер, получатель, подписчик, subs
     - *.culture.* - в очередь будут попадать новости культуры любого региона, адресованные пользователям всех типов
     - /# в очередь будут попадать сообщения с любыми ключами
 
+# RabbitMQ
+
+Для Python:
+  - Синхронная: pika
+  - Асинхронная: aiormq
+
+import asyncio
+
+import aiormq
+from aiormq.abc import DeliveredMessage
+
+
+# Callback-функция, вызываемая на каждое сообщение для консьюмера
+async def on_message(message: DeliveredMessage):
+    print(message.body.decode())
+
+    # Явное подтверждение получения и обработки сообщения
+    await message.channel.basic_ack(delivery_tag=message.delivery.delivery_tag)
+
+consumer.py
+
+>>>
+
+async def main():
+    # Подключение к RabbitMQ
+    connection = await aiormq.connect("amqp://rabbitmqlogin:rabbitmqpassword@localhost/")
+
+    # Создание канала
+    channel = await connection.channel()
+
+    # Объявление точки обмена (создается, если не существует)
+    await channel.exchange_declare("test_exchange", exchange_type="direct")
+
+    # Объявление очереди (создается, если не существует)
+    declare_ok = await channel.queue_declare('test_queue')
+
+    # Привязка очереди к точке обмена
+    await channel.queue_bind(
+        queue=declare_ok.queue,
+        exchange="test_exchange",
+        routing_key="test_routing_key"
+    )
+
+    # Определение количества сообщений, которые консьюмер может получить за один раз
+    await channel.basic_qos(prefetch_count=1)
+
+    # Настройка прослушивания очереди
+    await channel.basic_consume(declare_ok.queue, on_message, no_ack=False)
+
+    # Создание бесконечного цикла для ожидания сообщений для консьюмера из очереди
+    await asyncio.Future()
+
+
+asyncio.run(main())
+
+<<<
