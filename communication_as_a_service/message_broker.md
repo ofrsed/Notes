@@ -125,5 +125,6 @@ async def main():
 asyncio.run(main())
 ```
 
+`image: "heidiks/rabbitmq-delayed-message-exchange:latest"` - отложенные сообщения
 
 
