@@ -419,6 +419,37 @@ isinstance(x, int), x – вернет Trueб если проверяемый о
 
 # Итератор
 
-Итератор - объект, который реализует методы iter и next
+__Итерируемый объект__ - объект, который можно итерировать
+
+__Итератор__ - специальный объект, который выдает свои элементы по одному за раз. Объект, который реализует методы iter и next
+
+```
+words = ['hello', 'beegeek', 'python']
+
+iterator = iter(words)      # за кулисами вызывается метод words.__iter__()
+
+print(next(iterator))       # за кулисами вызывается метод iterator.__next__()
+print(next(iterator)) 
+```
+
+
+```
+class Counter:                             
+    def __init__(self, low, high):         # конструктор принимает два аргумента low и high (помимо self)
+        self.low = low
+        self.high = high
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self): 
+        if self.low > self.high:
+            raise StopIteration
+        else:
+            self.low += 1
+            return self.low - 1
+```
+
+Единственное, что мы можем сделать с итератором, — передать его функции next(). Как только итератор становится пустым и порождается исключение StopIteration, он становится совершенно бесполезным.
 
 # Генератор
