@@ -65,3 +65,16 @@ False
 True
 ![image](https://github.com/user-attachments/assets/f994aa99-c718-47b0-a429-197d9f95d65a)
 
+
+# Обработка исключений
+
+```
+import threading
+
+def error_except(args):
+    exc_type, exc_value, exc_traceback, exc_thread = args
+    print(f'{exc_thread.name}, {exc_type.__name__}, {exc_value}')
+
+
+threading.excepthook = error_except
+```
