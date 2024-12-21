@@ -111,7 +111,8 @@ print_thread.start()
 import queue
 
 my_queue = queue.Queue(maxsize=10) # указали ограничение размера в 10 элементов
-```  
+```
+
 ```
 y_thread_1 = MyNewThread(new_arg)
 my_thread_1.start()
