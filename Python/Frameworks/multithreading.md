@@ -78,3 +78,35 @@ def error_except(args):
 
 threading.excepthook = error_except
 ```
+
+
+# Переопределение потоков
+
+```
+import threading
+
+
+class PrintThread(threading.Thread):  # наследуем оригинальный класс Thread
+
+    def __init__(self, text): 
+        super().__init__()
+        self.text = text
+        # выведите на печать количество активных потоков
+
+    def run(self):  # переопределение метода run
+        # выведите на печать количество активных потоков
+        print(self.text)
+
+
+print_thread = PrintThread("Очень простой но бесполезный пример работы отдельного потока")
+print_thread.start()
+```
+
+Получить результат работы
+
+```
+y_thread_1 = MyNewThread(new_arg)
+my_thread_1.start()
+my_thread_1.join()
+res = my_thread_1.result
+```
