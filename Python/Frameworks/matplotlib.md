@@ -31,7 +31,9 @@ plt.setp(lines, linestyle='-.')
   - `"--r"` или `"r--"` или `color='g'` или `color='#0000CC'` или `color=(R,G,B, alphacanal=None)` - указать цвет
   - `"--o"` или `"--s"` или `markers="+"` - задать маркеры 
     - [Маркеры](https://matplotlib.org/stable/api/markers_api.html)
+  - `markerfacecolor='w'` - указать цвет заливки маркера
+  - `linewidth=4` - толщина линии
+  - [Остальные параметры](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html)
      
-    https://matplotlib.org/stable/api/markers_api.html
 `plt.plot(X1,Y1, X2, Y2)` / `plt.plot(X1,Y1) ; plt.plot(X2,Y2)` - несколько графиков в одних и тех же осях
 
