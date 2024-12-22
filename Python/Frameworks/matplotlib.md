@@ -20,7 +20,7 @@ plt.setp(lines, linestyle='-.')
 
 `plt.grid()` - добавить сетку
 
-`plt.plot(X=Индексы, Y, "--",)` - отображает двумерные графики
+- `plt.plot(X=Индексы, Y, "--",)` - отображает двумерные графики
   - `Y` - Множество точек по координате Y (X - индексы ячеек)
   - "--" - тип линиий
     - "-" - Непрерывная линия (используется по умолчанию)
@@ -29,7 +29,7 @@ plt.setp(lines, linestyle='-.')
     - ":" - Пунктирная линия
     - "None" или " " - Без рисования линии
   - `"--r"` или `"r--"` или `color='g'` или `color='#0000CC'` или `color=(R,G,B, alphacanal=None)` - указать цвет
-  - "--o" или "--s" - задать маркеры 
+  - `"--o"` или `"--s"` или `markers="+"` - задать маркеры 
     - [Маркеры](https://matplotlib.org/stable/api/markers_api.html)
      
     https://matplotlib.org/stable/api/markers_api.html
