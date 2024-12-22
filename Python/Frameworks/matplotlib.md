@@ -10,8 +10,10 @@ print(matplotlib.get_backend()) - получить бекэнд
 
 ![image](https://github.com/user-attachments/assets/5bdd2979-3b4b-4cfd-8b8b-0532b0921017)
 
-```lines = plt.plot(x, y)
-plt.setp(lines, linestyle='-.')```
+```
+lines = plt.plot(x, y)
+plt.setp(lines, linestyle='-.')
+```
 
 
 `plt.show()` - передает управление пользователю
