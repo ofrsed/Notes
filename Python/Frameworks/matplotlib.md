@@ -31,6 +31,8 @@ plt.setp(lines, linestyle='-.')
   - `"--r"` или `"r--"` или `color='g'` или `color='#0000CC'` или `color=(R,G,B, alphacanal=None)` - указать цвет
   -  "--o" или "--s" - задать маркеры 
     - [markers](https://matplotlib.org/stable/api/markers_api.html)
+    - [Grokking Algorithms](https://github.com/ofrsed/ofrsed/blob/main/Grokaem_algoritmy.pdf)
+     
     https://matplotlib.org/stable/api/markers_api.html
 `plt.plot(X1,Y1, X2, Y2)` / `plt.plot(X1,Y1) ; plt.plot(X2,Y2)` - несколько графиков в одних и тех же осях
 
