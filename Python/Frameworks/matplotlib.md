@@ -24,21 +24,7 @@
 - `plt.style.use('Solarize_Light2')` - стилизация вывода графиков (print(plt.style.available) - все стили)
 - `plt.grid(color='green', linestyle='--', linewidth=1)` - добавить сетку
 - plt.minorticks_on() - минорная сетка
-- `plt.legend()` - вывести легенду
-  - `loc=2` - положение
-    - 'best' или 0
-    - 'upper right'  или 1
-    - 'upper left'  или 2
-    - 'lower left' или 3
-    - 'lower right' или 4
-    - 'right' или 5
-    - 'center left' или 6
-    - 'center right' или 7
-    - 'lower center' или 8
-    - 'upper center' или 9
-    - 'center' или 10
-  - если передать кортеж - положение относительнно X и Y
-  - `title='Cities'` - название заголовка
+
 - `plt.show()` - передает управление пользователю
 
 ### Граничные значения осей и локаторы для расположения меток на них
@@ -218,4 +204,122 @@ plt.show()
 | linestyle или ls | стиль линии границы: {'-', '--', '-.', ':', '', (offset, on-offseq), ...} |
 | linewidth или lw | толщина рамки |
 
+### Добавляем легенду и рисуем геометрические фигуры на графиках
 
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure(figsize=(7, 4))
+ax = fig.add_subplot()
+ax.plot(np.arange(0, 5, 0.25), label='line1')
+ax.plot(np.arange(0, 10, 0.5), label='line2')
+ax.legend() # legend(['график1', 'график2']) / legend((ссылка на график1, ссылка на график2)['график2', 'график1'])
+plt.show()
+```
+
+- `plt.legend()` - вывести легенду
+  - `loc=2` - положение
+    - 'best' или 0
+    - 'upper right'  или 1
+    - 'upper left'  или 2
+    - 'lower left' или 3
+    - 'lower right' или 4
+    - 'right' или 5
+    - 'center left' или 6
+    - 'center right' или 7
+    - 'lower center' или 8
+    - 'upper center' или 9
+    - 'center' или 10
+  - если передать кортеж или `bbox_to_anchor=(0.5, 0.7)` - положение относительнно X и Y
+  - `title='Cities'` - название заголовка
+  - fontsize - Размер шрифта (число или строка: {'xxsmall', 'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large'})
+  - frameon - Отображать ли рамку у легенды (True/False)
+  - framealpha - Прозрачность фона (вещественное число или None)
+  - facecolor - Цвет заливки
+  - edgecolor - Цвет рамки
+  - title - Текст заголовка, либо значение None
+  - title_fontsize - Размер шрифта для заголовка
+
+
+### Рисование геометрических фигур на графике
+
+На  график можно наложить фигуру
+```
+from matplotlib.lines import Line2D
+l1 = Line2D([1, 2, 3], [1, 2, 3])
+ax.add_line(l1)
+ax.set(xlim=(1, 3), ylim=(1, 3))
+```
+
+Классы других стандартных геометрических фигур находятся в модуле: `from matplotlib.patches import *`
+```
+rect = Rectangle((0, 0), 2.5, 0.5, facecolor='g') 
+ax.add_patch(rect)
+```
+
+| Arc | Для рисования дуг |
+| Arrow | Для рисования стрелок (см. также ConnectionPatch, FancyArrowPatch и FancyArrow в этом же модуле) |
+| Circle | Для рисования окружностей |
+| CirclePolygon | Для рисования равносторонних многоугольников |
+| Ellipse | Для рисования эллипсов |
+| FancyBboxPatch | Для рисования прямоугольников с разными типами границ (с закругленными углами, в виде стрелок, с зубчатыми ребрами и т.п.) |
+| PathPatch | Для рисования линий или замкнутых областей |
+| Polygon | Для рисования многоугольников |
+| Rectangle | Для рисования прямоугольников |
+| Wedge | Для рисования «клина» (сектора окружности) |
+
+### Рисуем ступенчатые, стековые, stem и точечные графики
+![image](https://github.com/user-attachments/assets/6b7510f1-9c5f-4d5a-a315-09d522238a28)
+
+Ступенчатый
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+ 
+fig = plt.figure(figsize=(4, 4))
+ax = fig.add_subplot()
+ 
+x = np.arange(0, 10)
+ax.step(x, x, '-go', where='post') # where = {'pre',  'post',  'mid'}
+ax.grid()
+ 
+plt.show()
+```
+
+Стековый
+
+```
+x = np.arange(-2, 2, 0.1)
+y1 = np.array([-y**2 for y in x]) + 8
+y2 = np.array([-y**2 for y in x]) + 8
+y3 = np.array([-y**2 for y in x]) + 8
+ax.stackplot(x, y1, y2, y3)
+```
+
+stem - график
+
+```
+x = np.arange(-np.pi, np.pi, 0.3)
+ax.stem(x, np.cos(x), '--r', '^g', ':', bottom=0.5) # x,y, тип и цвет линии, тип и цвет маркеров,  цвет и стиль базовой линии
+```
+
+Точечный
+
+```
+x = np.random.normal(0, 2, 500)
+y = np.random.normal(0, 2, 500)
+
+ax.scatter(x, y)
+```
+
+| | |
+|-|-|
+| s | масштаб точек (число) |
+| c или color | цвет точек |
+| cmap | цветовая схема |
+| alpha | степень прозрачности |
+| linewidths | толщина граничной линии (вокруг точек) |
+| edgecolor | цвет границы |
+| marker | тип маркера |
