@@ -15,8 +15,23 @@ lines = plt.plot(x, y)
 plt.setp(lines, linestyle='-.')
 ```
 
+`plt.fill_between(x, y, 0.5, where=(y < 0), color='r', alpha=0.5)` - заливка областей графика 
 
-`plt.show()` - передает управление пользователю
+`subplot(nrows, ncolsm, index)` - Отображение нескольких координатных осей в одном окне
+  - nrows, ncols – число строк и столбцов;
+  - index – индекс текущих координатных осей.
+
+`f, ax = plt.subplots(nrows, ncolsm)` - заранее создает figure. 
+  - nrows, ncols – число строк и столбцов;
+  - f - ссылка на фигуру
+    - f.set_size_inches(7, 4) - размер 7 x 4 дюймов
+    - f.set_facecolor('#eee') - цвет фона (светло-серый)
+    - [Остальные методы](https://matplotlib.org/stable/api/figure_api.html)
+  - ax - ссылка список координатных осей (ax[0,1], ax[0,2])
+
+-`plt.show()` - передает управление пользователю
+
+
 
 `plt.grid()` - добавить сетку
 
