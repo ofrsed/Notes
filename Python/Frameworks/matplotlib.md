@@ -1,5 +1,7 @@
 - Установка `pip install matplotlib`
+
 - Импорт `import matplotlib.pyplot as plt`
+
 - Обновление библиотеки `pip install --upgrade matplotlib`
 
 абцисса - х
@@ -9,6 +11,7 @@ y = np.array([1,2,3,4,5])
 
 
 matplotlib.use('') - задать бекэнд
+
 print(matplotlib.get_backend()) - получить бекэнд
 
 ![image](https://github.com/user-attachments/assets/5bdd2979-3b4b-4cfd-8b8b-0532b0921017)
@@ -32,6 +35,8 @@ plt.setp(lines, linestyle='-.')
 
 `plt.style.use('Solarize_Light2')` - стилизация вывода графиков (print(plt.style.available) - все стили)
 
+`plt.grid(color='green', linestyle='--', linewidth=1)` - добавить сетку
+
 `plt.legend()` - вывести легенду
   - `loc=2` - положение
     - 'best' или 0
@@ -47,6 +52,34 @@ plt.setp(lines, linestyle='-.')
     - 'center' или 10
   - если передать кортеж - положение относительнно X и Y
   - `title='Cities'` - название заголовка
+
+
+### Работа с графиком
+
+- `plt.plot(X=Индексы, Y, "--",)` - отображает двумерные графики
+  - `Y` - Множество точек по координате Y (X - индексы ячеек)
+  - "--" - тип линиий
+    - "-" - Непрерывная линия (используется по умолчанию)
+    - "--" - Штриховая линия
+    - "-." - Штрихпунктирная линия
+    - ":" - Пунктирная линия
+    - "None" или " " - Без рисования линии
+  - `"--r"` или `"r--"` или `color='g'` или `color='#0000CC'` или `color=(R,G,B, alpha=None)` - указать цвет
+  - `"--o"` или `"--s"` или `markers="+"` - задать маркеры 
+    - [Маркеры](https://matplotlib.org/stable/api/markers_api.html)
+  - `markerfacecolor='w'` - указать цвет заливки маркера
+  - `markersize=4` - изменить размер маркера
+  - `markeredgecolor=yellow` - внешний контур
+  - `markeredgewidth=3` - размер внешнего контура
+  - `markerfacecolor='green'` - заполнить внутреннюю поверхность маркера каким-либо другим цветом.
+  - `linewidth=4` - толщина линии
+  - `alpha=4` - прозрачность
+  - `label='x1_y1'` - название для меток легенды
+  - [Остальные параметры](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html)
+     
+`plt.plot(X1,Y1, X2, Y2)` / `plt.plot(X1,Y1) ; plt.plot(X2,Y2)` - несколько графиков в одних и тех же осях
+
+
 
 ### Отображение нескольких координатных осей в одном окне
 
@@ -88,31 +121,4 @@ ax3.plot(np.random.random(10))
 
 
 -`plt.show()` - передает управление пользователю
-
-
-### Сетка
-`plt.grid(color='green', linestyle='--', linewidth=1)` - добавить сетку
-
-- `plt.plot(X=Индексы, Y, "--",)` - отображает двумерные графики
-  - `Y` - Множество точек по координате Y (X - индексы ячеек)
-  - "--" - тип линиий
-    - "-" - Непрерывная линия (используется по умолчанию)
-    - "--" - Штриховая линия
-    - "-." - Штрихпунктирная линия
-    - ":" - Пунктирная линия
-    - "None" или " " - Без рисования линии
-  - `"--r"` или `"r--"` или `color='g'` или `color='#0000CC'` или `color=(R,G,B, alpha=None)` - указать цвет
-  - `"--o"` или `"--s"` или `markers="+"` - задать маркеры 
-    - [Маркеры](https://matplotlib.org/stable/api/markers_api.html)
-  - `markerfacecolor='w'` - указать цвет заливки маркера
-  - `markersize=4` - изменить размер маркера
-  - `markeredgecolor=yellow` - внешний контур
-  - `markeredgewidth=3` - размер внешнего контура
-  - `markerfacecolor='green'` - заполнить внутреннюю поверхность маркера каким-либо другим цветом.
-  - `linewidth=4` - толщина линии
-  - `alpha=4` - прозрачность
-  - `label='x1_y1'` - название для меток легенды
-  - [Остальные параметры](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html)
-     
-`plt.plot(X1,Y1, X2, Y2)` / `plt.plot(X1,Y1) ; plt.plot(X2,Y2)` - несколько графиков в одних и тех же осях
 
