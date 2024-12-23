@@ -17,11 +17,11 @@ plt.setp(lines, linestyle='-.')
 
 `plt.fill_between(x, y, 0.5, where=(y < 0), color='r', alpha=0.5)` - заливка областей графика 
 
-`subplot(nrows, ncolsm, index)` - Отображение нескольких координатных осей в одном окне
-  - nrows, ncols – число строк и столбцов;
-  - index – индекс текущих координатных осей.
+- `subplot(nrows, ncolsm, index)` - Отображение нескольких координатных осей в одном окне
+  - `nrows`, `ncols` – число строк и столбцов;
+  - `index` – индекс текущих координатных осей.
 
-`f, ax = plt.subplots(nrows, ncolsm)` - заранее создает figure. 
+- `f, ax = plt.subplots(nrows, ncolsm)` - заранее создает figure. 
   - nrows, ncols – число строк и столбцов;
   - f - ссылка на фигуру
     - f.set_size_inches(7, 4) - размер 7 x 4 дюймов
