@@ -21,11 +21,11 @@ lines = plt.plot(x, y)
 plt.setp(lines, linestyle='-.')
 ```
 
-`plt.figure(figsize=(7,4))` - создать фигуру
+- `plt.figure(figsize=(7,4))` - создать фигуру
 
-`plt.title('График зависимости признаков х и у', fontsize=18, color='red', alpha=0.6)` - отображение заголовка
+- `plt.title('График зависимости признаков х и у', fontsize=18, color='red', alpha=0.6)` - отображение заголовка
 
-`plt.xlabel()` и `plt.ylabel(rotation=0, fontsize=14, color='red', labelpad=20)` - задать названия осям
+- `plt.xlabel()` и `plt.ylabel(rotation=0, fontsize=14, color='red', labelpad=20)` - задать названия осям
 
 `plt.xlim()` и `plt.ylim(0,26)` - применяются для изменения размерности осей графика. Этим функциям передаются два числа - начало и конец того диапазона, который мы хотим видеть на нашем графике.
 
