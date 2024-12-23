@@ -15,9 +15,14 @@ lines = plt.plot(x, y)
 plt.setp(lines, linestyle='-.')
 ```
 
+`plt.figure(figsize=(7,4))` - создать фигуру
+
+
 `plt.fill_between(x, y, 0.5, where=(y < 0), color='r', alpha=0.5)` - заливка областей графика 
 
-- `subplot(nrows, ncolsm, index)` - Отображение нескольких координатных осей в одном окне
+# Отображение нескольких координатных осей в одном окне
+
+- `subplot(nrows, ncolsm, index)` - создать координатрую ось (Axes)
   - `nrows`, `ncols` – число строк и столбцов;
   - `index` – индекс текущих координатных осей.
 
