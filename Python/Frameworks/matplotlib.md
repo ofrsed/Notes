@@ -339,7 +339,7 @@ fig = plt.figure(figsize=(6, 4))
 ax = fig.add_subplot()
  
 y = np.random.normal(0, 2, 500)
-ax.hist(y, 50) # по умолчанию разбивает весь интервал на равных 10 диапазонов, можно изменить через второй параметр
+ax.hist(y, 50,  edgecolor='black') # по умолчанию разбивает весь интервал на равных 10 диапазонов, можно изменить через второй параметр, edgecolor - цвет границ, orientation='horizontal'
 ax.grid()
  
 plt.show()
