@@ -24,7 +24,7 @@
 - `plt.style.use('Solarize_Light2')` - стилизация вывода графиков (print(plt.style.available) - все стили)
 - `plt.grid(color='green', linestyle='--', linewidth=1)` - добавить сетку
 - plt.minorticks_on() - минорная сетка
-
+- Axes.set_facecolor() - цвет фона сетки
 - `plt.show()` - передает управление пользователю
 
 ### Граничные значения осей и локаторы для расположения меток на них
