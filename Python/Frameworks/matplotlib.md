@@ -34,6 +34,27 @@ plt.setp(lines, linestyle='-.')
     - [Остальные методы](https://matplotlib.org/stable/api/figure_api.html)
   - ax - ссылка список координатных осей (ax[0,1], ax[0,2])
 
+#### Компоновка графиков с помощью GridSpec
+
+```
+from matplotlib.gridspec import GridSpec
+
+ws = [1, 2, 5] # размеры каждого графика (относительно суммарной длины всех ячеек) в виде списков
+hs = [2, 0.5]
+
+fig = plt.figure(figsize=(7, 4))
+gs = GridSpec(ncols=3, nrows=2, figure=fig, width_ratios=ws, height_ratios=hs) # 3 столбца и 2 строки
+
+ax1 = plt.subplot(gs[0, 0])
+ax1.plot(np.arange(0, 5, 0.2))
+ax2 = fig.add_subplot(gs[1, 0:2])
+ax2.plot(np.random.random(10))
+ax3 = fig.add_subplot(gs[:, 2])
+ax3.plot(np.random.random(10))
+```
+![image](https://github.com/user-attachments/assets/ebad4edc-aa94-4a37-bd0a-ed70787b3daf)
+
+
 -`plt.show()` - передает управление пользователю
 
 
