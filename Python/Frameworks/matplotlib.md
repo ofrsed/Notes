@@ -271,6 +271,8 @@ ax.add_patch(rect)
 | Rectangle | Для рисования прямоугольников |
 | Wedge | Для рисования «клина» (сектора окружности) |
 
+
+
 ### Рисуем ступенчатые, стековые, stem и точечные графики
 ![image](https://github.com/user-attachments/assets/6b7510f1-9c5f-4d5a-a315-09d522238a28)
 
