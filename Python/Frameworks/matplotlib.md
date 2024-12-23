@@ -323,3 +323,168 @@ ax.scatter(x, y)
 | linewidths | толщина граничной линии (вокруг точек) |
 | edgecolor | цвет границы |
 | marker | тип маркера |
+
+### Рисуем гистограммы, столбчатые и круговые диаграммы
+
+Гистограмма 
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+ 
+fig = plt.figure(figsize=(6, 4))
+ax = fig.add_subplot()
+ 
+y = np.random.normal(0, 2, 500)
+ax.hist(y, 50) # по умолчанию разбивает весь интервал на равных 10 диапазонов, можно изменить через второй параметр
+ax.grid()
+ 
+plt.show()
+```
+
+Столбчатая диаграмма
+
+```
+x = [f'H{i+1}' for i in range(10)]
+y = np.random.randint(1, 5, len(x))
+ax.bar(x, y)  # ax.barh(x, y) - по оси ординат
+```
+
+| Параметр | Описание |
+|-|-|
+| width | ширина столбцов (число или список) |
+| bottom | начальное значение столбцов (по умолчанию 0) |
+| align | выравнивание столбцов относительно риски: {'center',  'edge'} (по умолчанию 'center') |
+| alpha | степень прозрачности (число от 0 до 1) |
+| color | цвет столбцов |
+| edgecolor | цвет границы |
+| linewidth | толщина линии (вокруг столбца) |
+| xerr, yerr | отображение величины погрешности (ошибки) для столбцов по горизонтали и по вертикали (число или список) |
+| ecolor | цвет рисок линий погрешностей |
+| log | True/False (включение/выключение логарифмического масштаба) |
+| orientation | ориентация столбцов: {'vertical', 'horizontal'} |
+
+Круговые диаграммы
+
+```
+vals = [10, 40, 23, 30, 7]
+labels = ['Toyota', 'BMW', 'Lexus', 'Audi', 'Lada']
+ax.pie(vals, labels=labels)
+```
+
+| Параметр | Описание | 
+|-|-|
+| labels | список подписей для долей | 
+| explode | список долей, выносимых из диаграммы | 
+| colors | цвета долей | 
+| autopct | формат числа величины доли внутри сегмента | 
+| pctdistance | расстояние от центра доли до текстовой метки | 
+| shadow | отображение тени у диаграммы | 
+| labeldistance | расстояние для текстовых метод долей (по умолчанию 1.1) | 
+| startangle | начальный угол поворота диаграммы (против часовой стрелки) | 
+| radius | радиус диаграммы | 
+| counterclock | порядок размещения долей на диаграмме (по часовой стрелки или против часовой) True/False | 
+| center | координата центра диаграммы (по умолчанию (0, 0)) | 
+| frame | отображение рамки вокруг диаграммы (True/False) | 
+| wedgeprops | словарь дополнительных параметров (см. класс matplotlib.patches.Wedge) | 
+
+
+### Показ изображений и цветовых сеток
+
+```
+from PIL import Image
+
+img = Image.open('panda.jpg')
+
+import matplotlib.pyplot as plt
+fig = plt.figure(figsize=(6, 4))
+ax = fig.add_subplot()
+ax.imshow(img)
+fig.colorbar(b1, ax=ax)
+ 
+plt.show() #ожидает либо двумерный numpy массив, либо PIL-изображение
+```
+`ax.imshow(data, cmap='plasma')` - cmap - цветовая карта
+
+| Параметр | Описание |
+|-|-|
+| x (первый аргумент) | Двумерный массив numpy или PIL-изображения в формате (M, N), RGB: (M, N, 3), RGBA: (M, N, 4). Каждое число формата RGB или RGBA может быть целым [0; 255] или вещественным [0; 1]. |
+| cmap | Цветовая карта |
+| aspect | Соотношение сторон. Или вещественное число или одно из значений: {'equal', 'auto'} |
+| interpolation | Алгоритм интерполяции пикселей (данных) при масштабировании изображения. Поддерживаются значения: 'none',  'nearest',  'bilinear',  'bicubic', 'spline16', 'spline36', 'hanning', 'hamming', 'hermite', 'kaiser', 'quadric', 'catrom', 'gaussian', 'bessel', 'mitchell', 'sinc', 'lanczos' |
+| alpha | Степень прозрачности при отображении данных (параметр игнорируется для RGBA изображений). |
+| origin | Расположение начала координат при отображении данных: {'upper', 'lower'}. Где 'upper' – верхний левый угол, а 'lower' – нижний левый угол. |
+
+Цветовая сетка
+
+```
+data = np.random.randint(0, 255, (10, 10))
+ax.pcolormesh(data)
+```
+
+| Параметр | Описание |
+|-|-|
+| x (первый аргумент) | Двумерный массив numpy в формате (M, N). |
+| cmap | Используемая цветовая карта |
+| edgecolors | Цвет границы вокруг каждой клетки цветовой сетки. |
+| alpha | Степень прозрачности изображения. |
+| shading | Схема заливки: {'flat', 'gouraud'} |
+| snap | Привязка сетки к границам клеток (по умолчанию False) |
+
+
+### Как строить трехмерные графики
+
+После создания координатных осей мы можем в них строить двумерные и трехмерные графики с помощью того же самого набора функций:
+
+- plot() – линейный 2D график в трех измерениях;
+- step() – ступенчатый 2D график в трех измерениях;
+- scatter() – точеный график 3D график.
+
+Также нам становятся доступными следующие дополнительные функции:
+
+- plot_wireframe() – построение каркасной поверхности в 3D;
+- plot_surface() – построение непрерывной 3D поверхности.
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+# from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure(figsize=(7, 4))
+# ax_3d = Axes3D(fig)
+
+ax_3d = fig.add_subplot(projection='3d')
+ 
+plt.show()
+```
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+# from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure(figsize=(7, 4))
+ax_3d = fig.add_subplot(projection='3d')
+
+x = np.arange(-2*np.pi, 2*np.pi, 0.2)
+y = np.arange(-2*np.pi, 2*np.pi, 0.2)
+xgrid, ygrid = np.meshgrid(x, y)
+
+zgrid = np.sin(xgrid) * np.sin(ygrid) / (xgrid * ygrid)
+
+ax_3d.plot_wireframe(xgrid, ygrid, zgrid)
+
+ax_3d.set_xlabel('x')
+ax_3d.set_ylabel('y')
+ax_3d.set_zlabel('z')
+
+plt.show()
+```
+
+| Параметр | Описание |
+| - | - |
+| x, y, z | 2D массивы для построения трехмерных графиков. |
+| rcount, ccount | Максимальное число элементов каркаса по координатам x и y (по умолчанию 50). |
+| rstride, cstride | Величина шага, с которым будут выбираться элементы из массивов x, y (параметры rstride, cstride и rcount, ccount – взаимоисключающие). |
+| color | Цвет графика |
+| cmap | Цветовая карта графика |
