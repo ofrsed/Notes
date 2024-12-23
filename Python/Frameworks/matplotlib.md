@@ -30,6 +30,24 @@ plt.setp(lines, linestyle='-.')
 
 `plt.fill_between(x, y, 0.5, where=(y < 0), color='r', alpha=0.5)` - заливка областей графика 
 
+`plt.style.use('Solarize_Light2')` - стилизация вывода графиков (print(plt.style.available) - все стили)
+
+`plt.legend()` - вывести легенду
+  - `loc=2` - положение
+    - 'best' или 0
+    - 'upper right'  или 1
+    - 'upper left'  или 2
+    - 'lower left' или 3
+    - 'lower right' или 4
+    - 'right' или 5
+    - 'center left' или 6
+    - 'center right' или 7
+    - 'lower center' или 8
+    - 'upper center' или 9
+    - 'center' или 10
+  - если передать кортеж - положение относительнно X и Y
+  - `title='Cities'` - название заголовка
+
 ### Отображение нескольких координатных осей в одном окне
 
 - `subplot(nrows, ncolsm, index)` - создать координатрую ось (Axes)
@@ -43,6 +61,10 @@ plt.setp(lines, linestyle='-.')
     - f.set_facecolor('#eee') - цвет фона (светло-серый)
     - [Остальные методы](https://matplotlib.org/stable/api/figure_api.html)
   - ax - ссылка список координатных осей (ax[0,1], ax[0,2])
+
+- `plt.tight_layout()` - убрать наложение графиков
+
+- `plt.suptitle('Графики')` - задать заголовок фигуры
 
 #### Компоновка графиков с помощью GridSpec
 
@@ -89,6 +111,7 @@ ax3.plot(np.random.random(10))
   - `markerfacecolor='green'` - заполнить внутреннюю поверхность маркера каким-либо другим цветом.
   - `linewidth=4` - толщина линии
   - `alpha=4` - прозрачность
+  - `label='x1_y1'` - название для меток легенды
   - [Остальные параметры](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html)
      
 `plt.plot(X1,Y1, X2, Y2)` / `plt.plot(X1,Y1) ; plt.plot(X2,Y2)` - несколько графиков в одних и тех же осях
