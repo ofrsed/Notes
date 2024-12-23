@@ -1,25 +1,20 @@
 - Установка `pip install matplotlib`
-
 - Импорт `import matplotlib.pyplot as plt`
-
 - Обновление библиотеки `pip install --upgrade matplotlib`
 
 абцисса - х
 ордината - y
 
-y = np.array([1,2,3,4,5])
+`y = np.array([1,2,3,4,5])`
 
 
-matplotlib.use('') - задать бекэнд
-
-print(matplotlib.get_backend()) - получить бекэнд
+- `matplotlib.use('')` - задать бекэнд (`print(matplotlib.get_backend()`) - получить бекэнд)
 
 ![image](https://github.com/user-attachments/assets/5bdd2979-3b4b-4cfd-8b8b-0532b0921017)
 
-```
-lines = plt.plot(x, y)
-plt.setp(lines, linestyle='-.')
-```
+`lines = plt.plot(x, y); plt.setp(lines, linestyle='-.')`
+
+### Основные команды
 
 - `plt.figure(figsize=(7,4))` - создать фигуру
 - `plt.title('График зависимости признаков х и у', fontsize=18, color='red', alpha=0.6)` - отображение заголовка
@@ -44,8 +39,7 @@ plt.setp(lines, linestyle='-.')
     - 'center' или 10
   - если передать кортеж - положение относительнно X и Y
   - `title='Cities'` - название заголовка
-
-
+- `plt.show()` - передает управление пользователю
 ### Работа с графиком
 
 - `plt.plot(X=Индексы, Y, "--",)` - отображает двумерные графики
@@ -71,8 +65,6 @@ plt.setp(lines, linestyle='-.')
      
 `plt.plot(X1,Y1, X2, Y2)` / `plt.plot(X1,Y1) ; plt.plot(X2,Y2)` - несколько графиков в одних и тех же осях
 
-
-
 ### Отображение нескольких координатных осей в одном окне
 
 - `subplot(nrows, ncolsm, index)` - создать координатрую ось (Axes)
@@ -88,7 +80,6 @@ plt.setp(lines, linestyle='-.')
   - ax - ссылка список координатных осей (ax[0,1], ax[0,2])
 
 - `plt.tight_layout()` - убрать наложение графиков
-
 - `plt.suptitle('Графики')` - задать заголовок фигуры
 
 #### Компоновка графиков с помощью GridSpec
@@ -112,5 +103,4 @@ ax3.plot(np.random.random(10))
 ![image](https://github.com/user-attachments/assets/ebad4edc-aa94-4a37-bd0a-ed70787b3daf)
 
 
--`plt.show()` - передает управление пользователю
 
