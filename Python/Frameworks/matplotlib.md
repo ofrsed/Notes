@@ -314,6 +314,7 @@ x = np.random.normal(0, 2, 500)
 y = np.random.normal(0, 2, 500)
 
 ax.scatter(x, y)
+cbar = plt.colorbar()
 ```
 
 | | |
@@ -351,6 +352,7 @@ x = [f'H{i+1}' for i in range(10)]
 y = np.random.randint(1, 5, len(x))
 ax.bar(x, y)  # ax.barh(x, y) - по оси ординат
 ```
+plt.bar_label(ax, padding=5) - подписи к столбцам
 
 | Параметр | Описание |
 |-|-|
