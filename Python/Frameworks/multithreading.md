@@ -164,3 +164,34 @@ my_queue = queue.SimpleQueue()
 - `Queue.qsize()` - возвращает примерный размер очереди (целое число). Примерный, т.к. размер после получения может сразу же изменится в результате работы (обращения к очереди) другого потока. Нельзя использовать для определения "крайних" состояний очередей: полная очередь, пустая очередь. Для этого есть специальные методы определения;
   - `Queue.empty()` - возвращает True, если очередь пустая. Иначе - False;
   - `Queue.full()` - по аналогии, возвращает True, если очередь полная. Иначе - False.
+
+
+### Локальные переменные
+
+```
+import threading
+
+stor = threading.local() # Создаем объект локального хранилища
+stor.a = 100  # Создаем атрибут, доступный только Main потоку и передаем ему значение
+```
+
+Локальные переменные для каждого потока свои. Внутри реализован словарь где ключ - имя потока, значение - его локальные переменные
+
+Можно самому написать class унаследовавшись от threading.local()
+
+```
+from threading import Thread, local
+
+# где-то определен stor_local = local()
+
+
+def make_msg(stor_local: local):
+    authentication = hasattr(stor_local, "authentication")
+    fileno = None
+    date_and_time = None
+    if hasattr(stor_local, "fileno"):
+        fileno = stor_local.fileno
+    if hasattr(stor_local, "dt"):
+        date_and_time = stor_local.dt
+    return f"{authentication=}, {fileno=}, {date_and_time=}"
+```
