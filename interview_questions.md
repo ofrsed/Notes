@@ -634,3 +634,5 @@ def test_zero_division_error():
     with pytest.raises(ZeroDivisionError):
         result = 1 / 0
 ```
+
+__Мокинг (Mocking)__ — это процесс подмены реальных объектов тестируемого кода на фиктивные (mock-объекты), которые ведут себя так, как нужно для тестов.
