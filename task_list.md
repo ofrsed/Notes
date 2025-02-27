@@ -2,10 +2,10 @@
 
 ### Текущие задачи:
 
-- 🎥 [Clean Architecture](https://www.youtube.com/watch?v=WlCDcr8JYFU) — 2:30
-- 🎥 [Depends | Middleware | Background Tasks](https://www.youtube.com/watch?v=bcMZGPIeGzk) Middleware in FastAPI
+- [🎥](https://www.youtube.com/watch?v=WlCDcr8JYFU) __Clean Architecture__ 2:30
+- [🎥](https://www.youtube.com/watch?v=bcMZGPIeGzk) __Middleware in FastAPI__
 - 📚
 
 
 ### Завершенные задачи
-- [x] 📚 [Брокеры сообщений. Apache Kafka](https://stepik.org/course/199114/syllabus) 
+- [x] [📚](https://stepik.org/course/199114/syllabus) Брокеры сообщений. Apache Kafka
