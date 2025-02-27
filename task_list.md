@@ -2,9 +2,9 @@
 
 ### Текущие задачи:
 
-- [🎥](https://www.youtube.com/watch?v=WlCDcr8JYFU) __Clean Architecture__ 2:30
-- [🎥](https://www.youtube.com/watch?v=bcMZGPIeGzk) __Middleware in FastAPI__
-- 📚
+- [ ] [🎥](https://www.youtube.com/watch?v=WlCDcr8JYFU) __Clean Architecture__ 2:30
+- [ ] [🎥](https://www.youtube.com/watch?v=bcMZGPIeGzk) __Middleware in FastAPI__
+- [ ] 📚
 
 
 ### Завершенные задачи
