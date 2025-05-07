@@ -124,7 +124,7 @@ a ** b; // 25
 true && false // false
 false || true // true
 !true         // false
-
+```
 
 
 # 🔁 JavaScript: Условия (if, switch)
