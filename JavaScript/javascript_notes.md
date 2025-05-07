@@ -199,3 +199,16 @@ for (const key in obj) {
   console.log("for...in:", key, obj[key]);
 }
 ```
+
+# 📘 JavaScript: Function Declaration и аргументы по умолчанию
+
+## 🔹 Объявление функции (Function Declaration)
+
+```
+function sayHello() {
+  console.log("Привет!");
+}
+sayHello(); // 👉 "Привет!"
+```
+
+
