@@ -165,3 +165,30 @@ let age = 18;
 let message = age >= 18 ? "Вход разрешен" : "Вход запрещен";
 console.log(message); // "Вход разрешен"
 ```
+
+## 🔁 Цикл for
+```js
+for (let i = 0; i < 3; i++) {
+  console.log("for:", i);
+}
+```
+
+🔁 Цикл while
+```
+let i = 0;
+while (i < 3) {
+  console.log("while:", i);
+  i++;
+}
+```
+🔁 Цикл do...while
+
+```
+let j = 0;
+do {
+  console.log("do...while:", j);
+  j++;
+} while (j < 3);
+```
+
+
