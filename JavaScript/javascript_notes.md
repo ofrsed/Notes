@@ -191,4 +191,11 @@ do {
 } while (j < 3);
 ```
 
+🔁 Цикл for...in (объект)
 
+```
+const obj = { name: "Alice", age: 25 };
+for (const key in obj) {
+  console.log("for...in:", key, obj[key]);
+}
+```
