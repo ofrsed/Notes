@@ -7,4 +7,4 @@
 
 `kubectl cluster-info`
 
-`kubectl get nodes`
+`kubectl get nodes` - рабочие ноды
