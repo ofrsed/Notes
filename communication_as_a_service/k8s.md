@@ -64,6 +64,11 @@ kubectl version --client
 kubectl get nodes
 kubectl get po -A
 kubectl get po -A -o wide
+
+
+kubectl delete deployment name
+kubectl apply -f deployment.yaml
+
 ```
 
 
