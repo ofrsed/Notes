@@ -58,6 +58,10 @@ which kubectl
 kubelet --version
 kubeadm version
 kubectl version --client
+
+kubectl get nodes
+kubectl get po -A
+
 ```
 
 
