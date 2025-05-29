@@ -145,4 +145,11 @@ sudo kubeadm join 10.128.0.28:6443 --token 7y.z61zq4rzaq3rtipk \
         --discovery-token-ca-cert-hash sha256:e50a7a5b6261746684d033a7d6483ea5b84db8932cb70563b35f91080f7
 ```
 
+kubectl create secret generic my-app-secret \
+  --from-literal=BOT='твой_бот_токен' \
+  --from-literal=RABBITMQ_HOST='host' \
+  --from-literal=RABBITMQ_PORT='5672' \
+  --from-literal=RABBITMQ_USER='user' \
+  --from-literal=RABBITMQ_PASSWORD='password'
+
 
