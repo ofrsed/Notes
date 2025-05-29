@@ -13,7 +13,7 @@
 - ConfigMap / Secret -  объекты, в которых хранятся настройки и секреты (в виде ключ-значение).
 - Volume - объект, описывающий подключаемое хранилище.
 - Namespace  - логическая область в кластере для изоляции ресурсов.
-- 
+
 
 
 
@@ -35,6 +35,8 @@
 | `kubectl get componentstatuses` | Показать состояние k8s cluster`a |
 | `kubectl cluster-info` | Показать информацию о k8s cluster`a |
 | `kubectl get nodes` | Показать все сервера k8s cluster`a  |
+| `kubectl apply -f файл.yaml` | применить |
+
 
 
 
