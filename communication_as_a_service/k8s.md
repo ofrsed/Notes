@@ -46,5 +46,18 @@
 | `kubectl apply -f файл.yaml` | применить |
 
 
+```
+kubectl version --client
+
+sudo systemctl status kubelet
+
+which kubelet
+which kubeadm
+which kubectl
+
+kubelet --version
+kubeadm version
+kubectl version --client
+```
 
 
