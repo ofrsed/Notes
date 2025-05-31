@@ -6,7 +6,14 @@
 
 `kubectl logs <имя-pod>` - логи
 
+`kubectl get secret <имя секретов> -o yaml` - посмотреть секреты
 
+`kubectl get svc` 
+```
+kubectl create secret generic api-secrets \
+  --from-literal=KEY="$KEY" \
+  --dry-run=client -o yaml | kubectl apply -f -
+```
 Основные понятия:
 - Кластер - это группа серверов (нод), которые работают вместе как единая система
 - Pod -  минимальная единица запуска. Обычно содержит один контейнер, но может быть несколько.
