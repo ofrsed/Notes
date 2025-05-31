@@ -157,4 +157,4 @@ kubectl create secret generic my-app-secret \
   --from-literal=RABBITMQ_USER='user' \
   --from-literal=RABBITMQ_PASSWORD='password'
 
-
+kubectl get deployments
