@@ -8,7 +8,7 @@
 
 `kubectl get secret <имя секретов> -o yaml` - посмотреть секреты
 
-`kubectl get svc` 
+`kubectl get svc`  выводит список всех сервисов (Service) в текущем Kubernetes namespace.
 ```
 kubectl create secret generic api-secrets \
   --from-literal=KEY="$KEY" \
