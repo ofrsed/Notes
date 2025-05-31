@@ -1,5 +1,8 @@
 `kubectl apply -f backend-api-deployment.yaml` - Применить файл
 
+`kubectl rollout restart deployment <имя-деплоймента>`
+
+
 `kubectl get pods` - Запущенные поды (контейнеры)
 
 `kubectl describe pod <имя-pod>` - подробная информация
