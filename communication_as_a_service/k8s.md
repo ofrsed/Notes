@@ -5,6 +5,7 @@
 
 `kubectl rollout restart deployment <имя-деплоймента>`
 
+`kubectl exec -it <имя-пода> -- /bin/bash`
 
 `kubectl get pods` - Запущенные поды (контейнеры)
 
