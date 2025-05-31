@@ -1,5 +1,8 @@
 `kubectl apply -f backend-api-deployment.yaml` - Применить файл
 
+`kubectl get deployments
+`
+
 `kubectl rollout restart deployment <имя-деплоймента>`
 
 
