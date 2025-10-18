@@ -1,4 +1,10 @@
-а- [Python](#Python)
+alembic revision --autogenerate
+
+alembic upgrade head
+
+
+
+- [Python](#Python)
 - [Базы данных](#Базы-данных)
 - [Websocket](#Websocket)
 - [__Docker__](#Docker)
