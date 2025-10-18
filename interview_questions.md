@@ -1,7 +1,8 @@
-alembic revision --autogenerate
+`alembic revision --autogenerate`
 
-alembic upgrade head
+`alembic upgrade head`
 
+`alembic stamp head`
 
 
 - [Python](#Python)
