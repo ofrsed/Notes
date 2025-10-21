@@ -1,3 +1,5 @@
+ffplay rtsp://admin:admin@192.168.1.2:554/Streaming/Channels/101
+
 cvlc rtsp://admin:admin@192.168.1.2:554/Streaming/Channels/101
 
 `alembic revision --autogenerate`
