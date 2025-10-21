@@ -1,3 +1,5 @@
+sudo ip addr add 192.168.1.10/24 dev eth0
+
 ffplay rtsp://admin:admin@192.168.1.2:554/Streaming/Channels/101
 
 cvlc rtsp://admin:admin@192.168.1.2:554/Streaming/Channels/101
