@@ -1,3 +1,5 @@
+https://www.waveshare.com/wiki/7inch_HDMI_LCD_(B)
+
 sudo ip link set eth0 up
 
 sudo ip addr add 192.168.1.10/24 dev eth0
